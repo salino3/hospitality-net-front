@@ -31,11 +31,6 @@ const routes: PropsRoutes[] = [
     element: <Navigate to={routesApp?.root} />,
     visibility: "public",
   },
-  // {
-  //   path: routesApp?.errorPrivate404,
-  //   element: <Navigate to={routesApp?.private} />,
-  //   visibility: "private",
-  // },
 ];
 
 function chooseRoutes(visibility: string) {
@@ -50,13 +45,7 @@ function chooseRoutes(visibility: string) {
       return <AdminRoutes />;
 
     default:
-      return (
-        <Route
-          key="error"
-          path="*"
-          element={<Navigate to={routesApp?.root} />}
-        />
-      );
+      return null;
   }
 }
 
@@ -72,29 +61,6 @@ export const AppRoutes: React.FC = () => {
             </Route>
           );
         })}
-
-      {/*  */}
-      {/* {routes.map(({ path, element, visibility }) =>
-        visibility === "public" ? (
-          <Route key={path} path={routesApp?.root} element={<PublicRoutes />}>
-            <Route path={path} element={element} />
-          </Route>
-        ) : visibility === "private" ? (
-          <Route
-            key={path}
-            path={routesApp?.private}
-            element={<PrivateRoutes />}
-          >
-            <Route path={path} element={element} />
-          </Route>
-        ) : (
-          <Route
-            key="error"
-            path="*"
-            element={<Navigate to={routesApp?.root} />}
-          />
-        )
-      )} */}
     </Routes>
   );
 };

@@ -13,11 +13,11 @@ interface Routes {
 export const routesApp: Routes = {
   root: "/hospitality-net-front/",
   // Private routes
-  private: "/hospitality-net-front/private/",
+  private: "/hospitality-net-front/private",
   dashboard: "/hospitality-net-front/dashboard",
   companies: "/hospitality-net-front/companies",
   // Admin routes
-  admin: "/hospitality-net-front/admin/",
+  admin: "/hospitality-net-front/admin",
   // Error routes
-  error404: "/hospitality-net-front/*",
+  error404: "*",
 };
