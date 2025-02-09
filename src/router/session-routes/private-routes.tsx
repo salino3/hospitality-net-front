@@ -6,7 +6,6 @@ import { routesApp } from "../interface-routes";
 
 export const PrivateRoutes: React.FC = () => {
   const navigate = useNavigate();
-
   // const { loginAccount } = useContext<GlobalStateApp>(GlobalAppContext);
 
   // const { getAuthToken } = useAppFunctions();
