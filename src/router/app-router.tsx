@@ -1,8 +1,8 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { AdminRoutes, PrivateRoutes, PublicRoutes } from "./session-routes";
-import { HomeLayout } from "../layouts";
 import { routesApp } from "./interface-routes";
+import { DashboardLayout, HomeLayout } from "../layouts";
 
 interface PropsRoutes {
   path: string;
@@ -16,7 +16,11 @@ const routes: PropsRoutes[] = [
     element: <HomeLayout />,
     visibility: "public",
   },
-
+  {
+    path: routesApp?.dashboard,
+    element: <DashboardLayout />,
+    visibility: "private",
+  },
   {
     path: routesApp?.error404,
     element: <Navigate to={routesApp?.root} />,
@@ -57,6 +61,7 @@ export const AppRoutes: React.FC = () => {
       {routes &&
         routes?.length > 0 &&
         routes.map(({ path, element, visibility }) => {
+          console.log(path, element, visibility);
           return (
             <Route key={path} path={path} element={chooseRoutes(visibility)}>
               <Route path={path} element={element} />
