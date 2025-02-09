@@ -1,11 +1,11 @@
 import axios, { AxiosResponse } from "axios";
 import { apisApp } from ".";
 import { Account, AccountLoginForm } from "./accounts";
-import { useAppFunctions } from "../hooks";
+// import { useAppFunctions } from "../hooks";
 
 const { baseBackend } = apisApp;
 
-const { getEndTokenFromCookie } = useAppFunctions();
+// const { getEndTokenFromCookie } = useAppFunctions();
 
 export class ServicesApp {
   // Auth
@@ -31,7 +31,7 @@ export class ServicesApp {
 
   // Get Data
 
-  public static async getUsers(): Promise<AxiosResponse<Account[]>> {
+  public static async getAccounts(): Promise<AxiosResponse<Account[]>> {
     return await axios.get(`${baseBackend}/accounts`);
   }
 }

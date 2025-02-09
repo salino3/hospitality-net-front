@@ -1,5 +1,5 @@
 import { jwtDecode } from "jwt-decode";
-// import { CurrentAccount } from "../core";
+import { CurrentAccount } from "../core";
 import { routesApp } from "../router";
 
 export const useAppFunctions = () => {
@@ -17,31 +17,31 @@ export const useAppFunctions = () => {
   }
 
   //*
-  // const getAuthToken = (): CurrentAccount | null => {
-  //   const cookies = document.cookie.split("; ");
-  //   const authCookie = cookies.find((cookie) =>
-  //     cookie.startsWith(import.meta.env.VITE_APP_COOKIE_AUTH)
-  //   );
+  const getAuthToken = (): CurrentAccount | null => {
+    const cookies = document.cookie.split("; ");
+    const authCookie = cookies.find((cookie) =>
+      cookie.startsWith(import.meta.env.VITE_APP_COOKIE_AUTH)
+    );
 
-  //   if (!authCookie) return null;
+    if (!authCookie) return null;
 
-  //   const authCookieSplitted = authCookie.split("=")[1];
+    const authCookieSplitted = authCookie.split("=")[1];
 
-  //   // Verifiying it is divided in 3 parts - header, payload and signature
-  //   if (authCookieSplitted && authCookieSplitted.split(".").length === 3) {
-  //     try {
-  //       const decoded: any = jwtDecode(authCookieSplitted);
+    // Verifiying it is divided in 3 parts - header, payload and signature
+    if (authCookieSplitted && authCookieSplitted.split(".").length === 3) {
+      try {
+        const decoded: any = jwtDecode(authCookieSplitted);
 
-  //       return decoded || null;
-  //     } catch (error) {
-  //       console.error("Error decoding JWT:", error);
-  //       return null;
-  //     }
-  //   } else {
-  //     console.error("Invalid JWT format.");
-  //     return null;
-  //   }
-  // };
+        return decoded || null;
+      } catch (error) {
+        console.error("Error decoding JWT:", error);
+        return null;
+      }
+    } else {
+      console.error("Invalid JWT format.");
+      return null;
+    }
+  };
 
   //
   const closeSession = (): void => {
@@ -75,7 +75,7 @@ export const useAppFunctions = () => {
 
   return {
     getEndTokenFromCookie,
-    // getAuthToken,
+    getAuthToken,
     closeSession,
     //
     getWordPrefix,

@@ -5,7 +5,7 @@ interface Props {
   children: JSX.Element | JSX.Element[];
 }
 
-export const ProviderUsers: React.FC<Props> = ({ children }) => {
+export const ProviderAccounts: React.FC<Props> = ({ children }) => {
   const [accountsState, setAccountsState] =
     React.useState<StateAccounts>(initialStateUsers);
 
