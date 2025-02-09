@@ -52,6 +52,11 @@ export interface StateApp {
   currentAccount: CurrentAccount | null;
 }
 
+export interface AccountLoginForm {
+  email: string;
+  password: string;
+}
+
 export interface GlobalStateApp {
   state: StateApp;
   dispatch: React.Dispatch<All_Actions>;

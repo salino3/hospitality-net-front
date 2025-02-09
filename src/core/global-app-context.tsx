@@ -1,5 +1,5 @@
 import React from "react";
-import { GlobalStateApp } from "./interfaces";
+import { GlobalStateApp } from ".";
 
 export const GlobalAppContext = React.createContext<GlobalStateApp>(
   {} as GlobalStateApp
