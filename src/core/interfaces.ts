@@ -23,22 +23,6 @@ interface ActionsProvider {
   loginAccount: string;
 }
 
-// export interface Accounts {
-//   account_id?: number;
-//   username: string;
-//   email: string;
-//   profile_picture: string;
-//   full_name: string;
-//   age: number | null;
-//   bio: string;
-//   account_type: "individual" | "business";
-//   role_description: string;
-//   role_user: "user" | "admin";
-//   is_active: boolean;
-//   created_at: string;
-//   updated_at: string;
-// }
-
 export interface CurrentAccount {
   id: number;
   email: string;

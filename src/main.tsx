@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import { ProviderApp } from "./core/provider-app.tsx";
 import { ProviderAccounts } from "./core/accounts/provider-users.tsx";
 import App from "./App.tsx";
+import "./i18next/i18n.ts";
 import "./index.scss";
 
 createRoot(document.getElementById("root")!).render(

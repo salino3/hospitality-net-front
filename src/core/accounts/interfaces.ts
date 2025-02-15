@@ -15,12 +15,16 @@ export interface Account {
 }
 
 export interface AccountRegisterForm {
-  name: string;
   email: string;
   full_name?: string;
   password: string;
   passwordConfirm: string;
-  // age: number | null;
+  age: number | null;
+  account_type: "individual" | "business";
+  username: string;
+  bio?: string;
+  role_description?: string;
+  profile_picture: File | null;
 }
 
 export interface AccountLoginForm {
