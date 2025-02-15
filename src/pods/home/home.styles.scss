@@ -18,6 +18,10 @@
       gap: 0.5rem;
       justify-content: center;
       align-items: flex-start;
+
+      .inputError {
+        border-color: red;
+      }
     }
   }
 }

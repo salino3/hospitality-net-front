@@ -10,7 +10,9 @@ const { baseBackend } = apisApp;
 export class ServicesApp {
   // Auth
 
-  public static async registerUser(account: Account): Promise<AxiosResponse> {
+  public static async registerAccount(
+    account: Account
+  ): Promise<AxiosResponse> {
     return await axios.post(`${baseBackend}/auth/accounts/register`, account, {
       withCredentials: true,
     });

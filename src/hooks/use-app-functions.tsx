@@ -69,9 +69,26 @@ export const useAppFunctions = () => {
     }
   };
 
+  //
   function capitalizeFirst(text: string) {
     return text.charAt(0).toUpperCase() + text.slice(1);
   }
+
+  //
+  const checkEmptyValues = (values: any, list: any[] = []) => {
+    for (const key in values) {
+      if (Object.prototype.hasOwnProperty.call(values, key)) {
+        const value = values[key];
+        if (!list.includes(key)) {
+          // check if value is empty, undefined, or null
+          if (!value.trim() || value === undefined || value === null) {
+            console.log(`${key} is empty or falsy:`, value);
+            return true;
+          }
+        }
+      }
+    }
+  };
 
   return {
     getEndTokenFromCookie,
@@ -80,5 +97,6 @@ export const useAppFunctions = () => {
     //
     getWordPrefix,
     capitalizeFirst,
+    checkEmptyValues,
   };
 };
