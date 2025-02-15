@@ -24,6 +24,7 @@ export interface AccountRegisterForm {
   username: string;
   bio?: string;
   role_description?: string;
+  profile_picture: File | null;
 }
 
 export interface AccountLoginForm {

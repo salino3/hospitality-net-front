@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import { apisApp } from ".";
-import { Account, AccountLoginForm } from "./accounts";
+import { Account, AccountLoginForm, AccountRegisterForm } from "./accounts";
 // import { useAppFunctions } from "../hooks";
 
 const { baseBackend } = apisApp;
@@ -11,7 +11,7 @@ export class ServicesApp {
   // Auth
 
   public static async registerAccount(
-    account: Account
+    account: AccountRegisterForm
   ): Promise<AxiosResponse> {
     return await axios.post(`${baseBackend}/auth/accounts/register`, account, {
       withCredentials: true,

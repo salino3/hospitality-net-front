@@ -56,6 +56,7 @@ export const Login: React.FC = () => {
             id="email"
             type="email"
             name="email"
+            value={formData.email}
             onChange={handleChange("email")}
           />
           <small>{formDataError?.email}</small>
@@ -67,6 +68,7 @@ export const Login: React.FC = () => {
             id="password"
             type="password"
             name="password"
+            value={formData.password}
             onChange={handleChange("password")}
           />
           <small>{formDataError?.password}</small>
