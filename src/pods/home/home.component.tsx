@@ -1,11 +1,11 @@
 import React, { useContext, useEffect } from "react";
-import "./home.styles.scss";
 import { ServicesApp } from "../../core";
 import {
   Account,
   GlobalAccountsContext,
   GlobalStateAccounts,
 } from "../../core/accounts";
+import "./home.styles.scss";
 
 export const Home: React.FC = () => {
   const { accountsState, setAccountsState } = useContext<GlobalStateAccounts>(
@@ -20,25 +20,17 @@ export const Home: React.FC = () => {
   return (
     <div className="rootHomePage">
       <h1>Home Page</h1>
-      <p
-        style={{
-          borderBottom: "1px solid",
-        }}
-      >
-        Welcome to the Home Page
-      </p>
-
-      <div>
-        {accountsState &&
-        accountsState?.accounts &&
-        accountsState?.accounts?.length > 0 ? (
-          accountsState?.accounts.map((account: Account) => (
-            <p>{account?.username}</p>
-          ))
-        ) : (
-          <span>No Accounts</span>
-        )}
-      </div>
+      <form id="registerForm">
+        <div className="boxInput">
+          <label htmlFor="email">Email:</label>
+          <input type="email" name="email" />
+        </div>
+        <div className="boxInput">
+          <label htmlFor="password">Password:</label>
+          <input id="password" type="password" name="password" />
+        </div>
+        <input type="submit" value="Submit" />
+      </form>
     </div>
   );
 };

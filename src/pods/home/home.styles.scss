@@ -1,7 +1,23 @@
 .rootHomePage {
   display: flex;
   flex-direction: column;
-  min-height: 100%;
   justify-content: flex-start;
   align-items: center;
+  min-height: 100%;
+
+  #registerForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    .boxInput {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      justify-content: center;
+      align-items: flex-start;
+    }
+  }
 }
