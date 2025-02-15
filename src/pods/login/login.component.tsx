@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ServicesApp } from "../../core";
 import { useAppFunctions } from "../../hooks";
-import "./home.styles.scss";
+import "./login.styles.scss";
 
 interface LoginAccount {
   email: string;
   password: string;
 }
 
-export const Home: React.FC = () => {
+export const Login: React.FC = () => {
   const { t } = useTranslation("home");
 
   const { checkEmptyValues } = useAppFunctions();
@@ -45,9 +45,10 @@ export const Home: React.FC = () => {
     };
 
   return (
-    <div className="rootHomePage">
-      <h1>{t("home_page")}</h1>
-      <form onSubmit={handleSubmit} id="registerForm">
+    <div className="rootLogin">
+      <h1>{t("login_page")}</h1>
+      <p>{t("login_welcome")}</p>
+      <form onSubmit={handleSubmit} id="loginForm">
         <div className="boxInput">
           <label htmlFor="email">{t("email")}:</label>
           <input
