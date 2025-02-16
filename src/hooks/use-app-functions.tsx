@@ -92,7 +92,10 @@ export const useAppFunctions = () => {
   const checkEmptyValues = (
     values: any,
     list: any[] = [],
-    setFormDataError?: React.Dispatch<React.SetStateAction<AccountRegisterForm>>
+    setFormDataError?: React.Dispatch<
+      React.SetStateAction<AccountRegisterForm>
+    >,
+    t?: any
   ) => {
     for (const key in values) {
       if (Object.prototype.hasOwnProperty.call(values, key)) {
@@ -103,7 +106,7 @@ export const useAppFunctions = () => {
               if (!value) {
                 setFormDataError?.((prev) => ({
                   ...prev,
-                  [key]: `${key} is empty or with incorrect format`,
+                  [key]: `${t(key)} ${t("empty_or_incorrect")}`,
                 }));
                 return true;
               }
@@ -113,7 +116,7 @@ export const useAppFunctions = () => {
               if (!value) {
                 setFormDataError?.((prev) => ({
                   ...prev,
-                  [key]: `${key} is empty or with incorrect format`,
+                  [key]: `${t(key)} ${t("empty_or_incorrect")}`,
                 }));
                 return true;
               }
@@ -122,7 +125,7 @@ export const useAppFunctions = () => {
               if (!value || isNaN(value) || value < 0) {
                 setFormDataError?.((prev) => ({
                   ...prev,
-                  [key]: `${key} is empty or with incorrect format`,
+                  [key]: `${t(key)} ${t("empty_or_incorrect")}`,
                 }));
                 return true;
               }
@@ -132,12 +135,12 @@ export const useAppFunctions = () => {
               if (!value) {
                 setFormDataError?.((prev) => ({
                   ...prev,
-                  password: "Password is required",
+                  [key]: `${t(key)} ${t("is_required")}`,
                 }));
               } else if (value && value?.length < 6) {
                 setFormDataError?.((prev) => ({
                   ...prev,
-                  password: "Password must be at least 6 characters long",
+                  password: `${t(key)} must be at least 6 characters long`,
                 }));
                 return true;
               }
@@ -148,12 +151,12 @@ export const useAppFunctions = () => {
               if (!value) {
                 setFormDataError?.((prev) => ({
                   ...prev,
-                  email: "Email is required",
+                  [key]: `${t(key)} ${t("is_required")}`,
                 }));
               } else if (!emailRegex.test(value)) {
                 setFormDataError?.((prev) => ({
                   ...prev,
-                  email: "Invalid email format",
+                  email: `Invalid ${t(key)} format`,
                 }));
                 return true;
               }
@@ -162,7 +165,7 @@ export const useAppFunctions = () => {
               if (!value) {
                 setFormDataError?.((prev) => ({
                   ...prev,
-                  [key]: "Profile picture is required",
+                  [key]: `${t(key)} ${t("is_required")}`,
                 }));
                 return true;
               }
@@ -170,7 +173,7 @@ export const useAppFunctions = () => {
             default:
               setFormDataError?.((prev) => ({
                 ...prev,
-                [key]: `${key} is empty or with incorrect format`,
+                [key]: `${key} ${t("empty_or_incorrect")}`,
               }));
               break;
           }

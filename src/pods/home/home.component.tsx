@@ -69,7 +69,8 @@ export const Home: React.FC = () => {
       !checkEmptyValues(
         formData,
         ["bio", "full_name", "passwordConfirm"],
-        setFormDataError
+        setFormDataError,
+        t
       )
     ) {
       ServicesApp?.registerAccount(formData).then(() => {
@@ -216,7 +217,7 @@ export const Home: React.FC = () => {
             ? formDataError.profile_picture
             : ""}
         </div>
-        <input type="submit" value="Submit" />
+        <input type="submit" value={t("confirm")} />
       </form>
     </div>
   );
