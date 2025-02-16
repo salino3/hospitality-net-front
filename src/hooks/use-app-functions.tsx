@@ -96,7 +96,9 @@ export const useAppFunctions = () => {
       React.SetStateAction<AccountRegisterForm>
     >,
     t?: any
-  ) => {
+  ): boolean => {
+    let hasError = false;
+
     for (const key in values) {
       if (Object.prototype.hasOwnProperty.call(values, key)) {
         const value = values[key];
@@ -108,7 +110,7 @@ export const useAppFunctions = () => {
                   ...prev,
                   [key]: `${t(key)} ${t("empty_or_incorrect")}`,
                 }));
-                return true;
+                hasError = true;
               }
 
               break;
@@ -118,7 +120,7 @@ export const useAppFunctions = () => {
                   ...prev,
                   [key]: `${t(key)} ${t("empty_or_incorrect")}`,
                 }));
-                return true;
+                hasError = true;
               }
               break;
             case "age":
@@ -127,7 +129,7 @@ export const useAppFunctions = () => {
                   ...prev,
                   [key]: `${t(key)} ${t("empty_or_incorrect")}`,
                 }));
-                return true;
+                hasError = true;
               }
 
               break;
@@ -142,8 +144,8 @@ export const useAppFunctions = () => {
                   ...prev,
                   password: `${t(key)} must be at least 6 characters long`,
                 }));
-                return true;
               }
+              hasError = true;
 
               break;
 
@@ -158,8 +160,8 @@ export const useAppFunctions = () => {
                   ...prev,
                   email: `Invalid ${t(key)} format`,
                 }));
-                return true;
               }
+              hasError = true;
               break;
             case "profile_picture":
               if (!value) {
@@ -167,19 +169,27 @@ export const useAppFunctions = () => {
                   ...prev,
                   [key]: `${t(key)} ${t("is_required")}`,
                 }));
-                return true;
               }
+              hasError = true;
               break;
             default:
-              setFormDataError?.((prev) => ({
-                ...prev,
-                [key]: `${key} ${t("empty_or_incorrect")}`,
-              }));
+              if (
+                (value && !value.trim()) ||
+                value === undefined ||
+                value === null
+              ) {
+                setFormDataError?.((prev) => ({
+                  ...prev,
+                  [key]: `${key} ${t("empty_or_incorrect")}`,
+                }));
+              }
+              hasError = true;
               break;
           }
         }
       }
     }
+    return hasError;
   };
 
   return {
