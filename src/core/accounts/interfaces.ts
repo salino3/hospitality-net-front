@@ -19,12 +19,12 @@ export interface AccountRegisterForm {
   full_name?: string;
   password: string;
   passwordConfirm: string;
-  age: number | null;
+  age: number | null | string;
   account_type: "individual" | "business";
   username: string;
   bio?: string;
   role_description?: string;
-  profile_picture: File | null;
+  profile_picture: File | null | string;
 }
 
 export interface AccountLoginForm {

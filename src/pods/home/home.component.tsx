@@ -12,7 +12,7 @@ export const Home: React.FC = () => {
 
   const { checkEmptyValues } = useAppFunctions();
 
-  const [formData, setFormdata] = useState<AccountRegisterForm>({
+  const [formData, setFormData] = useState<AccountRegisterForm>({
     full_name: "",
     email: "",
     password: "",
@@ -25,7 +25,7 @@ export const Home: React.FC = () => {
     profile_picture: null,
   });
 
-  const [formDataError, setFormdataError] = useState<AccountRegisterForm>({
+  const [formDataError, setFormDataError] = useState<AccountRegisterForm>({
     email: "",
     password: "",
     passwordConfirm: "",
@@ -40,7 +40,8 @@ export const Home: React.FC = () => {
     (key: keyof AccountRegisterForm) =>
     (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       const { value } = event?.target;
-      setFormdata({ ...formData, [key]: value });
+      setFormData({ ...formData, [key]: value });
+      setFormDataError({ ...formDataError, [key]: "" });
     };
 
   // Handle file input change for profile picture
@@ -48,7 +49,7 @@ export const Home: React.FC = () => {
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     if (event.target.files && event.target.files.length > 0) {
-      setFormdata({ ...formData, profile_picture: event.target.files[0] });
+      setFormData({ ...formData, profile_picture: event.target.files[0] });
     }
   };
 
@@ -56,9 +57,23 @@ export const Home: React.FC = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event?.preventDefault();
 
-    if (!checkEmptyValues(formData, ["bio", "full_name"])) {
+    if (formData?.password !== formData?.passwordConfirm) {
+      setFormDataError({
+        ...formDataError,
+        passwordConfirm: t("passwords_not_match"),
+      });
+      return;
+    }
+
+    if (
+      !checkEmptyValues(
+        formData,
+        ["bio", "full_name", "passwordConfirm"],
+        setFormDataError
+      )
+    ) {
       ServicesApp?.registerAccount(formData).then(() => {
-        setFormdata({
+        setFormData({
           full_name: "",
           email: "",
           password: "",
@@ -197,7 +212,9 @@ export const Home: React.FC = () => {
             accept="image/*"
             onChange={handleProfilePictureChange}
           />
-          <small>{formDataError?.profile_picture ? "" : ""}</small>
+          {typeof formDataError?.profile_picture === "string"
+            ? formDataError.profile_picture
+            : ""}
         </div>
         <input type="submit" value="Submit" />
       </form>
