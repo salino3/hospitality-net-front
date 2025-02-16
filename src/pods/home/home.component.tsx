@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ServicesApp } from "../../core";
 import { useAppFunctions } from "../../hooks";
@@ -8,9 +8,11 @@ import "./home.styles.scss";
 export const Home: React.FC = () => {
   const { t } = useTranslation("home");
 
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
   const { checkEmptyValues } = useAppFunctions();
 
-  const [formData, setFormdata] = useState<AccountRegisterForm>({
+  const [formData, setFormData] = useState<AccountRegisterForm>({
     full_name: "",
     email: "",
     password: "",
@@ -23,8 +25,7 @@ export const Home: React.FC = () => {
     profile_picture: null,
   });
 
-  const [formDataError, setFormdataError] = useState<AccountRegisterForm>({
-    full_name: "",
+  const [formDataError, setFormDataError] = useState<AccountRegisterForm>({
     email: "",
     password: "",
     passwordConfirm: "",
@@ -32,36 +33,15 @@ export const Home: React.FC = () => {
     account_type: "individual",
     role_description: "",
     age: null,
-    bio: "",
     profile_picture: null,
   });
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event?.preventDefault();
-
-    // if (!checkEmptyValues(formData, ["profile_picture"])) {
-    ServicesApp?.registerAccount(formData).then((res: any) => {
-      setFormdata({
-        full_name: "",
-        email: "",
-        password: "",
-        passwordConfirm: "",
-        username: "",
-        account_type: "individual",
-        role_description: "",
-        age: null,
-        bio: "",
-        profile_picture: null,
-      });
-    });
-    // }
-  };
 
   const handleChange =
     (key: keyof AccountRegisterForm) =>
     (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       const { value } = event?.target;
-      setFormdata({ ...formData, [key]: value });
+      setFormData({ ...formData, [key]: value });
+      setFormDataError({ ...formDataError, [key]: "" });
     };
 
   // Handle file input change for profile picture
@@ -69,7 +49,48 @@ export const Home: React.FC = () => {
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     if (event.target.files && event.target.files.length > 0) {
-      setFormdata({ ...formData, profile_picture: event.target.files[0] });
+      setFormData({ ...formData, profile_picture: event.target.files[0] });
+    }
+  };
+
+  //
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event?.preventDefault();
+
+    if (formData?.password !== formData?.passwordConfirm) {
+      setFormDataError({
+        ...formDataError,
+        passwordConfirm: t("passwords_not_match"),
+      });
+      return;
+    }
+
+    if (
+      !checkEmptyValues(
+        formData,
+        ["bio", "full_name", "passwordConfirm"],
+        setFormDataError,
+        t
+      )
+    ) {
+      ServicesApp?.registerAccount(formData).then(() => {
+        setFormData({
+          full_name: "",
+          email: "",
+          password: "",
+          passwordConfirm: "",
+          username: "",
+          account_type: "individual",
+          role_description: "",
+          age: null,
+          bio: "",
+          profile_picture: null,
+        });
+        // Resetear input File
+        if (fileInputRef.current) {
+          fileInputRef.current.value = "";
+        }
+      });
     }
   };
 
@@ -88,7 +109,7 @@ export const Home: React.FC = () => {
             onChange={handleChange("full_name")}
             className={formDataError?.full_name ? "inputError" : ""}
           />
-          <small>{formDataError?.full_name}</small>
+          <small></small>
         </div>
         {/* Email */}
         <div className="boxInput">
@@ -153,7 +174,7 @@ export const Home: React.FC = () => {
             onChange={handleChange("bio")}
             className={formDataError?.bio ? "inputError" : ""}
           />
-          <small>{formDataError?.bio}</small>
+          <small></small>
         </div>
         {/* Password */}
         <div className="boxInput">
@@ -185,15 +206,18 @@ export const Home: React.FC = () => {
         <div className="boxInput">
           <label htmlFor="profile_picture">{t("profile_picture")}:</label>
           <input
+            ref={fileInputRef}
             id="profile_picture"
             type="file"
             name="profile_picture"
             accept="image/*"
             onChange={handleProfilePictureChange}
           />
-          <small>{formDataError?.profile_picture ? "" : ""}</small>
+          {typeof formDataError?.profile_picture === "string"
+            ? formDataError.profile_picture
+            : ""}
         </div>
-        <input type="submit" value="Submit" />
+        <input type="submit" value={t("confirm")} />
       </form>
     </div>
   );
