@@ -38,21 +38,21 @@ export const Home: React.FC = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event?.preventDefault();
-
+    console.log("here7", formData);
     // if (!checkEmptyValues(formData, ["profile_picture"])) {
     ServicesApp?.registerAccount(formData).then((res: any) => {
-      setFormdata({
-        full_name: "",
-        email: "",
-        password: "",
-        passwordConfirm: "",
-        username: "",
-        account_type: "individual",
-        role_description: "",
-        age: null,
-        bio: "",
-        profile_picture: null,
-      });
+      // setFormdata({
+      //   full_name: "",
+      //   email: "",
+      //   password: "",
+      //   passwordConfirm: "",
+      //   username: "",
+      //   account_type: "individual",
+      //   role_description: "",
+      //   age: null,
+      //   bio: "",
+      //   profile_picture: null,
+      // });
     });
     // }
   };

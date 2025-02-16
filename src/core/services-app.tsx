@@ -10,11 +10,41 @@ const { baseBackend } = apisApp;
 export class ServicesApp {
   // Auth
 
+  // public static async registerAccount(
+  //   account: AccountRegisterForm
+  // ): Promise<AxiosResponse> {
+  //   return await axios.post(`${baseBackend}/auth/accounts/register`, account, {
+  //     withCredentials: true,
+  //   });
+  // }
+
   public static async registerAccount(
     account: AccountRegisterForm
   ): Promise<AxiosResponse> {
-    return await axios.post(`${baseBackend}/auth/accounts/register`, account, {
+    const formData = new FormData();
+
+    // Append basic fields
+    formData.append("email", account.email);
+    if (account.full_name) formData.append("full_name", account.full_name);
+    formData.append("password", account.password);
+    formData.append("passwordConfirm", account.passwordConfirm);
+    formData.append("username", account.username);
+    formData.append("account_type", account.account_type);
+    if (account.role_description)
+      formData.append("role_description", account.role_description);
+    if (account.age !== null) formData.append("age", String(account.age));
+    if (account.bio) formData.append("bio", account.bio);
+
+    // Append file field if exists
+    if (account.profile_picture) {
+      formData.append("profile_picture", account.profile_picture);
+    }
+    console.log("here8", account.profile_picture);
+    return await axios.post(`${baseBackend}/auth/accounts/register`, formData, {
       withCredentials: true,
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
     });
   }
 
