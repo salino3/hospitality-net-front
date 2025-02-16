@@ -1,12 +1,16 @@
 import React, { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { ServicesApp } from "../../core";
 import { useAppFunctions } from "../../hooks";
 import { AccountRegisterForm } from "../../core/accounts";
+import { routesApp } from "../../router";
 import "./home.styles.scss";
 
 export const Home: React.FC = () => {
   const { t } = useTranslation("home");
+
+  const navigate = useNavigate();
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -73,24 +77,9 @@ export const Home: React.FC = () => {
         t
       )
     ) {
-      ServicesApp?.registerAccount(formData).then(() => {
-        setFormData({
-          full_name: "",
-          email: "",
-          password: "",
-          passwordConfirm: "",
-          username: "",
-          account_type: "individual",
-          role_description: "",
-          age: null,
-          bio: "",
-          profile_picture: null,
-        });
-        // Resetear input File
-        if (fileInputRef.current) {
-          fileInputRef.current.value = "";
-        }
-      });
+      ServicesApp?.registerAccount(formData).then(() =>
+        navigate(routesApp?.login)
+      );
     }
   };
 
@@ -105,7 +94,7 @@ export const Home: React.FC = () => {
             id="full_name"
             type="text"
             name="full_name"
-            value={formData.full_name}
+            value={formData.full_name || ""}
             onChange={handleChange("full_name")}
             className={formDataError?.full_name ? "inputError" : ""}
           />
@@ -118,7 +107,7 @@ export const Home: React.FC = () => {
             id="email"
             type="email"
             name="email"
-            value={formData.email}
+            value={formData.email || ""}
             onChange={handleChange("email")}
             className={formDataError?.email ? "inputError" : ""}
           />
@@ -131,7 +120,7 @@ export const Home: React.FC = () => {
             id="username"
             type="text"
             name="username"
-            value={formData.username}
+            value={formData.username || ""}
             onChange={handleChange("username")}
             className={formDataError?.username ? "inputError" : ""}
           />
@@ -145,7 +134,7 @@ export const Home: React.FC = () => {
             id="role_description"
             type="text"
             name="role_description"
-            value={formData.role_description}
+            value={formData.role_description || ""}
             onChange={handleChange("role_description")}
             className={formDataError?.role_description ? "inputError" : ""}
           />
@@ -163,14 +152,14 @@ export const Home: React.FC = () => {
             className={formDataError?.age ? "inputError" : ""}
           />
           <small>{formDataError?.age}</small>
-        </div>{" "}
+        </div>
         {/* Bio */}
         <div className="boxInput">
           <label htmlFor="bio">{t("bio")}:</label>
           <textarea
             id="bio"
             name="bio"
-            value={formData.bio}
+            value={formData.bio || ""}
             onChange={handleChange("bio")}
             className={formDataError?.bio ? "inputError" : ""}
           />
@@ -183,7 +172,7 @@ export const Home: React.FC = () => {
             id="password"
             type="password"
             name="password"
-            value={formData.password}
+            value={formData.password || ""}
             onChange={handleChange("password")}
             className={formDataError?.password ? "inputError" : ""}
           />
@@ -196,7 +185,7 @@ export const Home: React.FC = () => {
             id="passwordConfirm"
             type="password"
             name="passwordConfirm"
-            value={formData.passwordConfirm}
+            value={formData.passwordConfirm || ""}
             onChange={handleChange("passwordConfirm")}
             className={formDataError?.passwordConfirm ? "inputError" : ""}
           />

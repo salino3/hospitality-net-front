@@ -139,13 +139,14 @@ export const useAppFunctions = () => {
                   ...prev,
                   [key]: `${t(key)} ${t("is_required")}`,
                 }));
+                hasError = true;
               } else if (value && value?.length < 6) {
                 setFormDataError?.((prev) => ({
                   ...prev,
                   password: `${t(key)} must be at least 6 characters long`,
                 }));
+                hasError = true;
               }
-              hasError = true;
 
               break;
 
@@ -155,13 +156,14 @@ export const useAppFunctions = () => {
                   ...prev,
                   [key]: `${t(key)} ${t("is_required")}`,
                 }));
+                hasError = true;
               } else if (!emailRegex.test(value)) {
                 setFormDataError?.((prev) => ({
                   ...prev,
                   email: `Invalid ${t(key)} format`,
                 }));
+                hasError = true;
               }
-              hasError = true;
               break;
             case "profile_picture":
               if (!value) {
@@ -169,8 +171,8 @@ export const useAppFunctions = () => {
                   ...prev,
                   [key]: `${t(key)} ${t("is_required")}`,
                 }));
+                hasError = true;
               }
-              hasError = true;
               break;
             default:
               if (
@@ -182,8 +184,8 @@ export const useAppFunctions = () => {
                   ...prev,
                   [key]: `${key} ${t("empty_or_incorrect")}`,
                 }));
+                hasError = true;
               }
-              hasError = true;
               break;
           }
         }
