@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ServicesApp } from "../../core";
 import { useAppFunctions } from "../../hooks";
@@ -7,6 +7,8 @@ import "./home.styles.scss";
 
 export const Home: React.FC = () => {
   const { t } = useTranslation("home");
+
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const { checkEmptyValues } = useAppFunctions();
 
@@ -24,7 +26,6 @@ export const Home: React.FC = () => {
   });
 
   const [formDataError, setFormdataError] = useState<AccountRegisterForm>({
-    full_name: "",
     email: "",
     password: "",
     passwordConfirm: "",
@@ -32,30 +33,8 @@ export const Home: React.FC = () => {
     account_type: "individual",
     role_description: "",
     age: null,
-    bio: "",
     profile_picture: null,
   });
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event?.preventDefault();
-    console.log("here7", formData);
-    // if (!checkEmptyValues(formData, ["profile_picture"])) {
-    ServicesApp?.registerAccount(formData).then((res: any) => {
-      // setFormdata({
-      //   full_name: "",
-      //   email: "",
-      //   password: "",
-      //   passwordConfirm: "",
-      //   username: "",
-      //   account_type: "individual",
-      //   role_description: "",
-      //   age: null,
-      //   bio: "",
-      //   profile_picture: null,
-      // });
-    });
-    // }
-  };
 
   const handleChange =
     (key: keyof AccountRegisterForm) =>
@@ -70,6 +49,32 @@ export const Home: React.FC = () => {
   ) => {
     if (event.target.files && event.target.files.length > 0) {
       setFormdata({ ...formData, profile_picture: event.target.files[0] });
+    }
+  };
+
+  //
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event?.preventDefault();
+
+    if (!checkEmptyValues(formData, ["bio", "full_name"])) {
+      ServicesApp?.registerAccount(formData).then(() => {
+        setFormdata({
+          full_name: "",
+          email: "",
+          password: "",
+          passwordConfirm: "",
+          username: "",
+          account_type: "individual",
+          role_description: "",
+          age: null,
+          bio: "",
+          profile_picture: null,
+        });
+        // Resetear input File
+        if (fileInputRef.current) {
+          fileInputRef.current.value = "";
+        }
+      });
     }
   };
 
@@ -88,7 +93,7 @@ export const Home: React.FC = () => {
             onChange={handleChange("full_name")}
             className={formDataError?.full_name ? "inputError" : ""}
           />
-          <small>{formDataError?.full_name}</small>
+          <small></small>
         </div>
         {/* Email */}
         <div className="boxInput">
@@ -153,7 +158,7 @@ export const Home: React.FC = () => {
             onChange={handleChange("bio")}
             className={formDataError?.bio ? "inputError" : ""}
           />
-          <small>{formDataError?.bio}</small>
+          <small></small>
         </div>
         {/* Password */}
         <div className="boxInput">
@@ -185,6 +190,7 @@ export const Home: React.FC = () => {
         <div className="boxInput">
           <label htmlFor="profile_picture">{t("profile_picture")}:</label>
           <input
+            ref={fileInputRef}
             id="profile_picture"
             type="file"
             name="profile_picture"

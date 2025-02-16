@@ -39,7 +39,7 @@ export class ServicesApp {
     if (account.profile_picture) {
       formData.append("profile_picture", account.profile_picture);
     }
-    console.log("here8", account.profile_picture);
+
     return await axios.post(`${baseBackend}/auth/accounts/register`, formData, {
       withCredentials: true,
       headers: {
