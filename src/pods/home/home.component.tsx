@@ -145,17 +145,14 @@ export const Home: React.FC = () => {
         />
 
         {/* Bio */}
-        <div className="boxInput">
-          <label htmlFor="bio">{t("bio")}:</label>
-          <textarea
-            id="bio"
-            name="bio"
-            value={formData.bio || ""}
-            onChange={handleChange("bio")}
-            className={formDataError?.bio ? "inputError" : ""}
-          />
-          <small></small>
-        </div>
+        <BasicInput
+          type="textarea"
+          name={t("bio")}
+          change={handleChange("bio")}
+          value={formData?.bio || ""}
+          lbl={t("bio")}
+        />
+
         {/* Password */}
         <BasicInput
           type="password"
