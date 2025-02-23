@@ -1,0 +1,29 @@
+.containerBasicInput {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .contentInputBI {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+    position: relative;
+
+    label {
+      position: absolute;
+      left: 3px;
+      opacity: 0.5;
+    }
+
+    input {
+      padding: 0.5rem;
+      border: none;
+      border-bottom: 1px solid;
+      transition: border-color 0.3s ease;
+      background-color: var(--color-two);
+      border-radius: 5px;
+    }
+  }
+}

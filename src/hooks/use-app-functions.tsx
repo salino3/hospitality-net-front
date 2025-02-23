@@ -91,6 +91,7 @@ export const useAppFunctions = () => {
   //
   const checkEmptyValues = (
     values: any,
+    // it does not check them
     list: any[] = [],
     setFormDataError?: React.Dispatch<
       React.SetStateAction<AccountRegisterForm>

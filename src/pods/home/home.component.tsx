@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { ServicesApp } from "../../core";
 import { useAppFunctions } from "../../hooks";
 import { AccountRegisterForm } from "../../core/accounts";
+import { BasicInput } from "../../common-app";
 import { routesApp } from "../../router";
 import "./home.styles.scss";
 
@@ -72,6 +73,7 @@ export const Home: React.FC = () => {
     if (
       !checkEmptyValues(
         formData,
+        // it does not check them
         ["bio", "full_name", "passwordConfirm"],
         setFormDataError,
         t
@@ -88,6 +90,7 @@ export const Home: React.FC = () => {
       <h1>{t("home_page")}</h1>
       <form onSubmit={handleSubmit} id="registerForm">
         {/* Full Name */}
+        <BasicInput type="text" name={t("full_name")} lbl={t("full_name")} />
         <div className="boxInput">
           <label htmlFor="full_name">{t("full_name")}:</label>
           <input
