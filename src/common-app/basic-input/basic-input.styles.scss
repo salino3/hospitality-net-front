@@ -3,6 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 2rem 0;
 
   .contentInputBI {
     display: flex;
@@ -10,11 +11,14 @@
     justify-content: center;
     gap: 0.5rem;
     position: relative;
-
     label {
       position: absolute;
       left: 3px;
       opacity: 0.5;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      transition: top 0.3s ease, transform 0.3s ease;
     }
 
     input {
@@ -22,14 +26,17 @@
       border: none;
       border-bottom: 1px solid;
       transition: border-color 0.3s ease;
+      transition: height 0.3s ease;
+
       background-color: var(--color-two);
       border-radius: 5px;
     }
 
-    input:focus {
-      label {
-        opacity: 0;
-      }
+    &:focus-within label {
+      top: -50%;
+      bottom: translateY(100%);
+      font-size: 0.8rem;
+      //   left: 0.5rem;
     }
 
     // It works after focus
