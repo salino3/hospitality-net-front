@@ -4,14 +4,29 @@ import { routesApp } from "../../router";
 import { useTranslation } from "react-i18next";
 import { GlobalAppContext } from "../../core";
 import "./header.styles.scss";
+import { ChooseLanguage } from "../choose-language";
 
 export const Header: React.FC = () => {
   const { t } = useTranslation("common");
 
-  const { state } = useContext(GlobalAppContext);
-  const { currentAccount } = state;
+  const {
+    state: { currentAccount },
+  } = useContext(GlobalAppContext);
 
   const [openSelectLanguage, setOpenSelectLanguage] = useState(false);
+  const [fadeClose, setFadeClose] = useState(false);
+
+  const handleLanguages = () => {
+    if (!openSelectLanguage) {
+      setOpenSelectLanguage(true);
+      setFadeClose(false);
+    } else {
+      setFadeClose(true);
+      setTimeout(() => {
+        setOpenSelectLanguage(false);
+      }, 1000);
+    }
+  };
 
   return (
     <header className="rootHeader">
@@ -27,17 +42,25 @@ export const Header: React.FC = () => {
               </p>
             </div>
             <div className="boxDown">
-              <span
-                onClick={() => setOpenSelectLanguage(!openSelectLanguage)}
-                className="spanLanguage"
-              >
+              <span onClick={() => handleLanguages()} className="spanLanguage">
                 {t("languages")}
-
                 <img
+                  className={`iconLanguage ${
+                    openSelectLanguage ? "rotateIcon" : ""
+                  }`}
                   src={"assets/icons/arrow_04.svg"}
                   aria-label={t("choose_language")}
                   alt={t("arrow_languages")}
                 />
+                <div
+                  className={`dropdownLanguage ${
+                    !fadeClose && openSelectLanguage ? "showDropdown" : ""
+                  }
+                    
+                  ${fadeClose ? "fadeClose" : ""}`}
+                >
+                  <ChooseLanguage />
+                </div>
               </span>
             </div>
           </div>

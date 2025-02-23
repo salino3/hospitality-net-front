@@ -1,7 +1,6 @@
 :host,
 :root {
   --color-one: #2d3748; /* Dark Gray (for text or primary elements) */
-  --color-two: #4a5568; /* Medium Gray (secondary elements) */
   --color-three: #38b2ac; /* Teal (accent color) */
   --color-four: #f6ad55; /* Warm Orange (highlight elements) */
 
@@ -17,7 +16,11 @@
   --color-12: #1e73be; /* Blue - Professionalism and trust */
   --color-13: #f4a261; /* Gold - Hospitality and warmth */
   --color-14: #ffffff; /* White - Clean and clear */
-  //
+
+  // WEB appling colors
+  --color-one: #2d3748; /* Dark Gray (secondary elements) */
+  --color-two: #4a5568; /* Medium Gray (secondary ligther elements) */
+
   --color-15: #1b1b1b; /* Black - Sophistication and exclusivity */
   --color-16: #d4af37; /* Gold - Luxury and quality */
   --color-17: #f5f5f5; /* Light Gray/White - Modern and clean */
