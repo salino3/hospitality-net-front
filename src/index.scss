@@ -13,6 +13,25 @@
   --color-ten: #30d2ca;
   --color-11: #fff;
 
+  //
+  --color-12: #1e73be; /* Blue - Professionalism and trust */
+  --color-13: #f4a261; /* Gold - Hospitality and warmth */
+  --color-14: #ffffff; /* White - Clean and clear */
+  //
+  --color-15: #1b1b1b; /* Black - Sophistication and exclusivity */
+  --color-16: #d4af37; /* Gold - Luxury and quality */
+  --color-17: #f5f5f5; /* Light Gray/White - Modern and clean */
+  --color-18: #e0e0e0; /* Secondary text - Subtle gray */
+
+  --button-primary-bg: #d4af37; /* Gold - Primary button background */
+  --button-primary-text: #1b1b1b; /* Black - Primary button text */
+  --button-secondary-bg: #f5f5f5; /* Light Gray - Secondary button background */
+  --button-secondary-text: #1b1b1b; /* Black - Secondary button text */
+
+  --button-primary-hover: #b8962e; /* Darker gold for hover effect */
+  --button-secondary-hover: #e0e0e0; /* Darker gray for hover effect */
+
+  //
   --color-link: #553eb6;
 }
 
@@ -21,42 +40,42 @@ html,
 body {
   padding: 0;
   margin: 0;
-  background-color: var(--color-nine);
 }
 
 html {
   font-size: 16px;
+  box-sizing: border-box;
 }
 
 body {
   font-family: Arial, Helvetica, sans-serif !important;
-  #light {
-    color: var(--color-one) !important;
-    background-color: var(--color-nine);
+  #dark {
+    color: var(--color-17) !important;
+    background-color: var(--color-15);
 
     button {
-      color: var(--color-two);
-      background-color: var(--color-six);
+      color: var(--button-primary-text);
+      background-color: var(--button-primary-bg);
     }
     .selectedLanguage {
-      background-color: var(--color-five);
+      background-color: var(--color-13);
     }
     .primaryBtn {
-      color: var(--color-two);
-      background-color: var(--color-six);
+      color: var(--button-primary-text);
+      background-color: var(--button-primary-bg);
     }
     .secundaryBtn {
-      color: var(--color-six);
-      background-color: var(--color-two);
+      color: var(--button-secondary-text);
+      background-color: var(--button-secondary-bg);
     }
   }
 
-  #dark {
-    color: var(--color-seven) !important;
-    background-color: var(--color-two);
+  #light {
+    color: var(--color-15) !important;
+    background-color: var(--color-17);
     button {
-      color: var(--color-six);
-      background-color: var(--color-five);
+      color: var(--button-primary-text);
+      background-color: var(--button-primary-bg);
     }
     .selectedLanguage {
       background-color: var(--color-nine);

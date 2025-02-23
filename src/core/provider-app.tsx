@@ -18,7 +18,7 @@ export const ProviderApp: React.FC<Props> = ({ children }) => {
   const toggleTheme = useCallback(() => {
     dispatch({
       type: actionsProvider?.updateTheme,
-      payload: state.theme === "light" ? "dark" : "light",
+      payload: state.theme === "dark" ? "light" : "dark",
     });
   }, []);
 

@@ -5,6 +5,8 @@ import { en as enHome } from "./home/en";
 import { es as esHome } from "./home/es";
 import { en as enDashboard } from "./dashboard/en";
 import { es as esDashboard } from "./dashboard/es";
+import { en as enCommon } from "./common/en";
+import { es as esCommon } from "./common/es";
 
 // Use the language detector
 i18n
@@ -15,10 +17,12 @@ i18n
       en: {
         home: enHome,
         dashboard: enDashboard,
+        common: enCommon,
       },
       es: {
         home: esHome,
         dashboard: esDashboard,
+        common: esCommon,
       },
     },
     lng: localStorage.getItem("lng") || undefined, // use detector to decide the language (use localStorage value if available)
