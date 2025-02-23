@@ -38,6 +38,12 @@
   --color-link: #553eb6;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html,
 #root,
 body {
@@ -47,7 +53,6 @@ body {
 
 html {
   font-size: 16px;
-  box-sizing: border-box;
   letter-spacing: 0.5px;
 }
 

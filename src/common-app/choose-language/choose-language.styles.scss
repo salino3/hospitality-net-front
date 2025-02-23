@@ -1,3 +1,13 @@
 .containerChooseLanguage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
   padding: 0.5rem 1rem;
+  height: 100%;
+
+  button {
+    background-color: var(--color-17) !important;
+  }
 }

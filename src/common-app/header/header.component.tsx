@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { routesApp } from "../../router";
 import { useTranslation } from "react-i18next";
 import { GlobalAppContext } from "../../core";
-import "./header.styles.scss";
 import { ChooseLanguage } from "../choose-language";
+import "./header.styles.scss";
 
 export const Header: React.FC = () => {
   const { t } = useTranslation("common");
@@ -41,12 +41,13 @@ export const Header: React.FC = () => {
                 )}
               </p>
             </div>
+            {/*  */}
             <div className="boxDown">
               <span onClick={() => handleLanguages()} className="spanLanguage">
                 {t("languages")}
                 <img
                   className={`iconLanguage ${
-                    openSelectLanguage ? "rotateIcon" : ""
+                    !fadeClose && openSelectLanguage ? "rotateIcon" : ""
                   }`}
                   src={"assets/icons/arrow_04.svg"}
                   aria-label={t("choose_language")}
@@ -59,7 +60,7 @@ export const Header: React.FC = () => {
                     
                   ${fadeClose ? "fadeClose" : ""}`}
                 >
-                  <ChooseLanguage />
+                  {openSelectLanguage && <ChooseLanguage />}
                 </div>
               </span>
             </div>

@@ -4,13 +4,13 @@
   }
 
   to {
-    height: 60px;
+    height: 120px;
   }
 }
 
 @keyframes cover {
   from {
-    height: 60px;
+    height: 120px;
   }
 
   to {
@@ -41,7 +41,6 @@
       justify-content: center;
       align-items: center;
       flex-grow: 1;
-      box-sizing: content-box;
 
       .container_034 {
         display: grid;
@@ -57,7 +56,6 @@
           height: min-content;
           padding: 0;
           margin: 0;
-          box-sizing: border-box;
 
           h4 {
             color: var(--color-16);
@@ -74,6 +72,7 @@
           align-items: flex-start;
           height: 100%;
           padding-bottom: 0.5rem;
+          //
           .spanLanguage {
             cursor: pointer;
             display: flex;
