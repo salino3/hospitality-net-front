@@ -74,7 +74,7 @@
 
           .boxBtnLogin {
             display: flex;
-            justify-content: flex-start;
+            justify-content: center;
             align-items: center;
             width: 220px;
           }
@@ -170,6 +170,25 @@
             font-weight: 600;
           }
         }
+      }
+    }
+    @media screen and (max-width: 800px) {
+      flex-direction: column;
+
+      .boxInfo {
+        .container_034 {
+          display: flex;
+          flex-direction: column-reverse;
+          justify-content: center;
+          align-items: center;
+          .boxUp {
+            flex-direction: column;
+          }
+        }
+      }
+
+      nav ul {
+        flex-direction: column;
       }
     }
   }
