@@ -7,6 +7,7 @@ export const es = {
   companies: "Empresas",
   dashboard: "Panel",
   login: "Inicio se sessión",
+  register: "Registro",
   arrow_languages: "Flecha idiomas",
   choose_language: "Elejir idioma",
   languages: "Idiomas",

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { routesApp } from "../../router";
 import { useTranslation } from "react-i18next";
 import { GlobalAppContext } from "../../core";
@@ -8,6 +8,9 @@ import "./header.styles.scss";
 
 export const Header: React.FC = () => {
   const { t } = useTranslation("common");
+
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const {
     state: { currentAccount },
@@ -39,7 +42,22 @@ export const Header: React.FC = () => {
                 <p>{currentAccount?.email}</p>
               ) : (
                 <div className="boxBtnLogin">
-                  <button className="btnStylesApp">{t("login")}</button>
+                  <button
+                    onClick={() =>
+                      navigate(
+                        location?.pathname === routesApp?.root
+                          ? routesApp?.login
+                          : routesApp?.root
+                      )
+                    }
+                    className="btnStylesApp"
+                  >
+                    {t(
+                      location?.pathname === routesApp?.root
+                        ? "login"
+                        : "register"
+                    )}
+                  </button>
                 </div>
               )}
             </div>
