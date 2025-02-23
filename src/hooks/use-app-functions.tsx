@@ -91,6 +91,7 @@ export const useAppFunctions = () => {
   //
   const checkEmptyValues = (
     values: any,
+    // it does not check them
     list: any[] = [],
     setFormDataError?: React.Dispatch<
       React.SetStateAction<AccountRegisterForm>
@@ -143,7 +144,7 @@ export const useAppFunctions = () => {
               } else if (value && value?.length < 6) {
                 setFormDataError?.((prev) => ({
                   ...prev,
-                  password: `${t(key)} must be at least 6 characters long`,
+                  password: `${t(key)} ${t("at_least_6")}`,
                 }));
                 hasError = true;
               }

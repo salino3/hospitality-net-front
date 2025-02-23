@@ -20,5 +20,6 @@ export const es = {
   confirm: "Confirmar",
   empty_or_incorrect: "está vacío o con formato incorrecto",
   is_required: "es requerido",
-  at_leadet_6: "debe tener al menos 6 caracteres",
+  at_least_6: "debe contener al menos 6 caracteres",
+  passwords_not_match: "Las contraseñas no coinciden",
 };

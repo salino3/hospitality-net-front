@@ -1,5 +1,5 @@
-import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { routesApp } from "../../router";
 import { useTranslation } from "react-i18next";
 import { GlobalAppContext } from "../../core";
@@ -8,6 +8,12 @@ import "./header.styles.scss";
 
 export const Header: React.FC = () => {
   const { t } = useTranslation("common");
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const btnToggleRef = useRef<HTMLSpanElement>(null);
+  const elementRef = useRef<HTMLDivElement>(null);
 
   const {
     state: { currentAccount },
@@ -28,6 +34,28 @@ export const Header: React.FC = () => {
     }
   };
 
+  //
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        elementRef.current &&
+        !elementRef.current.contains(event?.target as Node) &&
+        btnToggleRef.current &&
+        btnToggleRef.current !== event?.target &&
+        !btnToggleRef.current.contains(event?.target as Node)
+      ) {
+        setOpenSelectLanguage(false);
+        setFadeClose(false);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
   return (
     <header className="rootHeader">
       <div className="containerHeader">
@@ -39,13 +67,32 @@ export const Header: React.FC = () => {
                 <p>{currentAccount?.email}</p>
               ) : (
                 <div className="boxBtnLogin">
-                  <button className="btnStylesApp">{t("login")}</button>
+                  <button
+                    onClick={() =>
+                      navigate(
+                        location?.pathname === routesApp?.root
+                          ? routesApp?.login
+                          : routesApp?.root
+                      )
+                    }
+                    className="btnStylesApp"
+                  >
+                    {t(
+                      location?.pathname === routesApp?.root
+                        ? "login"
+                        : "register"
+                    )}
+                  </button>
                 </div>
               )}
             </div>
             {/*  */}
             <div className="boxDown">
-              <span onClick={() => handleLanguages()} className="spanLanguage">
+              <span
+                ref={btnToggleRef}
+                onClick={() => handleLanguages()}
+                className="spanLanguage"
+              >
                 {t("languages")}
                 <img
                   className={`iconLanguage ${
@@ -57,6 +104,7 @@ export const Header: React.FC = () => {
                 />
               </span>
               <div
+                ref={elementRef}
                 className={`dropdownLanguage ${
                   !fadeClose && openSelectLanguage ? "showDropdown" : ""
                 }

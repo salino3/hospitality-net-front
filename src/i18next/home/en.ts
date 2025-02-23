@@ -20,5 +20,6 @@ export const en = {
   confirm: "Confrim",
   empty_or_incorrect: "is empty or with incorrect format",
   is_required: "is required",
-  at_leadet_6: "must be at least 6 characters long",
+  at_least_6: "must be at least 6 characters long",
+  passwords_not_match: "Passwords do not match",
 };
