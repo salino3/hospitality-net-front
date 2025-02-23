@@ -5,17 +5,22 @@ import "./choose-language.styles.scss";
 export const ChooseLanguage: React.FC = () => {
   const { t, i18n } = useTranslation("common");
 
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+    localStorage.setItem("lng", lng);
+  };
+
   return (
     <div className="containerChooseLanguage">
       <button
         className="btnEnglish btnStylesApp"
-        onClick={() => i18n.changeLanguage("en")}
+        onClick={() => changeLanguage("en")}
       >
         {t("english")}
       </button>
       <button
         className="btnSpanish btnStylesApp"
-        onClick={() => i18n.changeLanguage("es")}
+        onClick={() => changeLanguage("es")}
       >
         {t("spanish")}
       </button>

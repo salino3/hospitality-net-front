@@ -9,4 +9,7 @@ export const es = {
   login: "Inicio se sessión",
   arrow_languages: "Flecha idiomas",
   choose_language: "Elejir idioma",
+  languages: "Idiomas",
+  english: "Inglés",
+  spanish: "Español",
 };

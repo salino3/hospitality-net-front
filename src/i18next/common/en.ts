@@ -9,4 +9,7 @@ export const en = {
   login: "Login",
   arrow_languages: "Arrow languages",
   choose_language: "Chosse language",
+  languages: "languages",
+  english: "English",
+  spanish: "Spanish",
 };
