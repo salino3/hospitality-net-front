@@ -35,11 +35,13 @@ export const Header: React.FC = () => {
           <div className="container_034">
             <div className="boxUp">
               <h4>{t("hospitality_net")}</h4>
-              <p>
-                {currentAccount?.email || (
+              {currentAccount?.email ? (
+                <p>{currentAccount?.email}</p>
+              ) : (
+                <div className="boxBtnLogin">
                   <button className="btnStylesApp">{t("login")}</button>
-                )}
-              </p>
+                </div>
+              )}
             </div>
             {/*  */}
             <div className="boxDown">
@@ -77,9 +79,9 @@ export const Header: React.FC = () => {
             <li>
               <Link to={routesApp?.dashboard}>{t("dashboard")}</Link>
             </li>
-            <li>
+            {/* <li>
               <Link to={routesApp?.login}>{t("login")}</Link>
-            </li>
+            </li> */}
           </ul>
         </nav>
       </div>
