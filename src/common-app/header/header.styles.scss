@@ -4,4 +4,101 @@
   justify-content: center;
   align-items: stretch;
   gap: 1rem;
+  font-size: 18px;
+
+  .containerHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    border: solid;
+    width: 100%;
+
+    .boxInfo {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex-grow: 1;
+      box-sizing: content-box;
+
+      .container_034 {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr min-content;
+
+        .boxUp {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          gap: 1rem;
+          height: min-content;
+          padding: 0;
+          margin: 0;
+          box-sizing: border-box;
+
+          h4 {
+            color: var(--color-16);
+            font-size: 24px;
+            font-family: cursive;
+            padding: 0;
+            margin: 0;
+          }
+        }
+
+        .boxDown {
+          display: flex;
+          justify-content: flex-start;
+          align-items: flex-start;
+          height: 100%;
+          padding-bottom: 0.5rem;
+          .spanLanguage {
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+          }
+        }
+      }
+    }
+
+    nav {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      flex-grow: 1;
+
+      ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+          padding: 0.5rem 1rem;
+          background-color: var(--color-17);
+          border-radius: 5px;
+          cursor: pointer;
+          &:hover {
+            background-color: var(--color-18);
+          }
+          a {
+            color: inherit;
+            text-decoration: none;
+            color: var(--color-16);
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
 }

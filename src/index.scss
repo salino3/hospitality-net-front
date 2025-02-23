@@ -45,6 +45,7 @@ body {
 html {
   font-size: 16px;
   box-sizing: border-box;
+  letter-spacing: 0.5px;
 }
 
 body {
@@ -90,12 +91,29 @@ body {
     }
   }
 
+  .btnStylesApp {
+    font-size: 1rem;
+    letter-spacing: 2px;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    text-decoration: none;
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
   button {
     cursor: pointer;
   }
 
   button:active {
-    scale: 0.97;
+    scale: 0.98;
     opacity: 0.5;
   }
 }
