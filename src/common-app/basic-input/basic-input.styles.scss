@@ -25,5 +25,20 @@
       background-color: var(--color-two);
       border-radius: 5px;
     }
+
+    input:focus {
+      label {
+        opacity: 0;
+      }
+    }
+
+    // It works after focus
+    // input:invalid {
+    //   border: 2px solid red;
+    // }
+
+    // input:valid {
+    //   border: 2px solid green;
+    // }
   }
 }

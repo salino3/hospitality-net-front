@@ -33,6 +33,9 @@ export const BasicInput: React.FC<PropsBasicInput> = (props) => {
       >
         <label htmlFor={name}>{lbl}</label>
         <input
+          // It works after focus
+          //   pattern="[A-Za-z]{3,10}"
+          //   required
           id={name}
           name={name}
           type={type}
