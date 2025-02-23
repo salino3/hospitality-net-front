@@ -8,9 +8,11 @@ interface PropsBasicInput {
   lbl?: string;
   click?: React.MouseEventHandler<HTMLInputElement> | undefined;
   change?: React.ChangeEventHandler<HTMLInputElement> | undefined;
+  value?: string | number | readonly string[] | undefined;
   ref?: React.LegacyRef<HTMLInputElement> | undefined;
   errMsg?: string;
   checkError?: boolean;
+  min?: string | number | undefined;
 }
 
 export const BasicInput: React.FC<PropsBasicInput> = (props) => {
@@ -21,9 +23,11 @@ export const BasicInput: React.FC<PropsBasicInput> = (props) => {
     lbl,
     click,
     change,
+    value,
     ref,
     errMsg,
     checkError = false,
+    min,
   } = props;
   return (
     <div ref={ref} className={`containerBasicInput ${customStyles}`}>
@@ -35,11 +39,14 @@ export const BasicInput: React.FC<PropsBasicInput> = (props) => {
           //   pattern="[A-Za-z]{3,10}"
           //   required
           //   onInvalid={handleInvalid} // Handle errors
+          min={min}
           id={name}
           name={name}
           type={type}
+          value={value}
           onClick={click}
           onChange={change}
+          //   onBlur={handleBlur} // Handle input blur
           // onInput={() => alert("Hi!")} // It works when value change
         />
       </div>

@@ -90,72 +90,60 @@ export const Home: React.FC = () => {
       <h1>{t("home_page")}</h1>
       <form onSubmit={handleSubmit} id="registerForm">
         {/* Full Name */}
-        <BasicInput type="text" name={t("full_name")} lbl={t("full_name")} />
-        <div className="boxInput">
-          <label htmlFor="full_name">{t("full_name")}:</label>
-          <input
-            id="full_name"
-            type="text"
-            name="full_name"
-            value={formData.full_name || ""}
-            onChange={handleChange("full_name")}
-            className={formDataError?.full_name ? "inputError" : ""}
-          />
-          <small></small>
-        </div>
-        {/* Email */}
-        <div className="boxInput">
-          <label htmlFor="email">{t("email")}:</label>
-          <input
-            id="email"
-            type="email"
-            name="email"
-            value={formData.email || ""}
-            onChange={handleChange("email")}
-            className={formDataError?.email ? "inputError" : ""}
-          />
-          <small>{formDataError?.email}</small>
-        </div>
-        {/* Username */}
-        <div className="boxInput">
-          <label htmlFor="username">{t("username")}:</label>
-          <input
-            id="username"
-            type="text"
-            name="username"
-            value={formData.username || ""}
-            onChange={handleChange("username")}
-            className={formDataError?.username ? "inputError" : ""}
-          />
+        <BasicInput
+          type="text"
+          change={handleChange("full_name")}
+          name={t("full_name")}
+          lbl={t("full_name")}
+          value={formData?.full_name || ""}
+        />
 
-          <small>{formDataError?.username}</small>
-        </div>
+        {/* Email */}
+        <BasicInput
+          type="email"
+          name={t("email")}
+          change={handleChange("email")}
+          value={formData.email || ""}
+          lbl={t("email")}
+          checkError={!!formDataError?.email}
+          errMsg={formDataError?.email}
+        />
+
+        {/* Username */}
+        <BasicInput
+          type="text"
+          name={t("username")}
+          change={handleChange("username")}
+          value={formData?.username || ""}
+          lbl={t("username")}
+        />
+
         {/* Role Description */}
-        <div className="boxInput">
-          <label htmlFor="role_description">{t("role_description")}:</label>
-          <input
-            id="role_description"
-            type="text"
-            name="role_description"
-            value={formData.role_description || ""}
-            onChange={handleChange("role_description")}
-            className={formDataError?.role_description ? "inputError" : ""}
-          />
-          <small>{formDataError?.role_description}</small>
-        </div>
+        <BasicInput
+          type="text"
+          name={t("role_description")}
+          change={handleChange("role_description")}
+          value={formData?.role_description || ""}
+          lbl={t("role_description")}
+          checkError={!!formDataError?.role_description}
+          errMsg={formDataError?.role_description}
+        />
+
         {/* Age */}
-        <div className="boxInput">
-          <label htmlFor="age">{t("age")}:</label>
-          <input
-            id="age"
-            type="number"
-            name="age"
-            value={formData.age ?? ""}
-            onChange={handleChange("age")}
-            className={formDataError?.age ? "inputError" : ""}
-          />
-          <small>{formDataError?.age}</small>
-        </div>
+        <BasicInput
+          type="number"
+          name={t("age")}
+          change={handleChange("age")}
+          value={formData?.age ?? ""}
+          lbl={t("age")}
+          checkError={!!formDataError?.age}
+          errMsg={
+            typeof formDataError?.age === "string"
+              ? formDataError?.age
+              : undefined
+          }
+        />
+
         {/* Bio */}
         <div className="boxInput">
           <label htmlFor="bio">{t("bio")}:</label>
@@ -169,31 +157,27 @@ export const Home: React.FC = () => {
           <small></small>
         </div>
         {/* Password */}
-        <div className="boxInput">
-          <label htmlFor="password">{t("password")}:</label>
-          <input
-            id="password"
-            type="password"
-            name="password"
-            value={formData.password || ""}
-            onChange={handleChange("password")}
-            className={formDataError?.password ? "inputError" : ""}
-          />
-          <small>{formDataError?.password}</small>
-        </div>
+        <BasicInput
+          type="password"
+          name={t("password")}
+          change={handleChange("password")}
+          value={formData?.password || ""}
+          lbl={t("password")}
+          checkError={!!formDataError?.password}
+          errMsg={formDataError?.password}
+        />
+
         {/* Password Confirmation */}
-        <div className="boxInput">
-          <label htmlFor="passwordConfirm">{t("passwordConfirm")}:</label>
-          <input
-            id="passwordConfirm"
-            type="password"
-            name="passwordConfirm"
-            value={formData.passwordConfirm || ""}
-            onChange={handleChange("passwordConfirm")}
-            className={formDataError?.passwordConfirm ? "inputError" : ""}
-          />
-          <small>{formDataError?.passwordConfirm}</small>
-        </div>
+        <BasicInput
+          type="password"
+          name={t("passwordConfirm")}
+          change={handleChange("passwordConfirm")}
+          value={formData?.passwordConfirm || ""}
+          lbl={t("passwordConfirm")}
+          checkError={!!formDataError?.passwordConfirm}
+          errMsg={formDataError?.passwordConfirm}
+        />
+
         {/* Profile Picture */}
         <div className="boxInput">
           <label htmlFor="profile_picture">{t("profile_picture")}:</label>
