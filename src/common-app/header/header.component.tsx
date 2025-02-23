@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { routesApp } from "../../router";
 import { useTranslation } from "react-i18next";
@@ -11,6 +11,8 @@ export const Header: React.FC = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
+  const btnToggleRef: any = useRef(null);
+  const elementRef: any = useRef(null);
 
   const {
     state: { currentAccount },
@@ -30,6 +32,28 @@ export const Header: React.FC = () => {
       }, 1000);
     }
   };
+
+  //
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        elementRef.current &&
+        !elementRef.current.contains(event?.target) &&
+        btnToggleRef.current &&
+        btnToggleRef.current !== event?.target &&
+        !btnToggleRef.current.contains(event?.target)
+      ) {
+        setOpenSelectLanguage(false);
+        setFadeClose(false);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
 
   return (
     <header className="rootHeader">
@@ -63,7 +87,11 @@ export const Header: React.FC = () => {
             </div>
             {/*  */}
             <div className="boxDown">
-              <span onClick={() => handleLanguages()} className="spanLanguage">
+              <span
+                ref={btnToggleRef}
+                onClick={() => handleLanguages()}
+                className="spanLanguage"
+              >
                 {t("languages")}
                 <img
                   className={`iconLanguage ${
@@ -75,6 +103,7 @@ export const Header: React.FC = () => {
                 />
               </span>
               <div
+                ref={elementRef}
                 className={`dropdownLanguage ${
                   !fadeClose && openSelectLanguage ? "showDropdown" : ""
                 }
