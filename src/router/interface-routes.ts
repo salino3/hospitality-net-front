@@ -1,5 +1,6 @@
 interface Routes {
   root: string;
+  login: string;
   // Private routes
   private: string;
   dashboard: string;
@@ -12,6 +13,7 @@ interface Routes {
 
 export const routesApp: Routes = {
   root: "/hospitality-net-front/",
+  login: "/hospitality-net-front/login",
   // Private routes
   private: "/hospitality-net-front/private",
   dashboard: "/hospitality-net-front/dashboard",

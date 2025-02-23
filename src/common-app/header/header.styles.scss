@@ -1,0 +1,195 @@
+@keyframes show {
+  from {
+    height: 0px;
+  }
+
+  to {
+    height: 120px;
+  }
+}
+
+@keyframes cover {
+  from {
+    height: 120px;
+  }
+
+  to {
+    height: 0px;
+  }
+}
+
+.rootHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  gap: 1rem;
+  font-size: 18px;
+
+  .containerHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    border: solid;
+    width: 100%;
+    padding: 0.5rem;
+
+    .boxInfo {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex-grow: 1;
+
+      .container_034 {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr min-content;
+        gap: 0.5rem;
+
+        .boxUp {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          gap: 1rem;
+          height: min-content;
+          padding: 0;
+          margin: 0;
+
+          h4 {
+            color: var(--color-16);
+            font-size: 24px;
+            font-family: cursive;
+            padding: 0;
+            margin: 0;
+          }
+
+          p {
+            padding: 0;
+            margin: 0;
+          }
+
+          .boxBtnLogin {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 220px;
+          }
+        }
+
+        .boxDown {
+          display: flex;
+          justify-content: flex-start;
+          align-items: flex-start;
+          height: 100%;
+          padding-bottom: 0.5rem;
+          position: relative;
+
+          //
+          .spanLanguage {
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 19px;
+            font-weight: 600;
+            width: 200px;
+
+            .iconLanguage {
+              transform: rotate(0deg);
+              transition: transform 0.3s ease-in-out;
+            }
+
+            .rotateIcon {
+              transform: rotate(90deg);
+              transition: transform 0.3s ease-in-out;
+            }
+          }
+          .dropdownLanguage {
+            position: absolute;
+            top: 90%;
+            left: 0;
+            background-color: var(--color-one);
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+          }
+
+          .fadeClose {
+            animation: cover 1s forwards;
+          }
+
+          .showDropdown {
+            animation: show 1s forwards;
+          }
+        }
+      }
+    }
+
+    nav {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      flex-grow: 1;
+
+      ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+          padding: 0.5rem 1rem;
+          background-color: var(--color-17);
+          border-radius: 5px;
+          width: 120px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          &:hover {
+            background-color: var(--color-18);
+          }
+          a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: inherit;
+            text-decoration: none;
+            color: var(--color-16);
+            font-weight: 600;
+          }
+        }
+      }
+    }
+    @media screen and (max-width: 800px) {
+      flex-direction: column;
+
+      .boxInfo {
+        .container_034 {
+          display: flex;
+          flex-direction: column-reverse;
+          justify-content: center;
+          align-items: center;
+          .boxUp {
+            flex-direction: column;
+          }
+        }
+      }
+
+      nav ul {
+        flex-direction: column;
+      }
+    }
+  }
+}

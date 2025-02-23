@@ -45,6 +45,6 @@ export interface GlobalStateApp {
 
 // Initial state useReducer
 export const initialState: StateApp = {
-  theme: "light",
+  theme: "dark",
   currentAccount: null,
 };
