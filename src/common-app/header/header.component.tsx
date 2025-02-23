@@ -11,8 +11,9 @@ export const Header: React.FC = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
-  const btnToggleRef: any = useRef(null);
-  const elementRef: any = useRef(null);
+
+  const btnToggleRef = useRef<HTMLSpanElement>(null);
+  const elementRef = useRef<HTMLDivElement>(null);
 
   const {
     state: { currentAccount },
@@ -38,10 +39,10 @@ export const Header: React.FC = () => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
         elementRef.current &&
-        !elementRef.current.contains(event?.target) &&
+        !elementRef.current.contains(event?.target as Node) &&
         btnToggleRef.current &&
         btnToggleRef.current !== event?.target &&
-        !btnToggleRef.current.contains(event?.target)
+        !btnToggleRef.current.contains(event?.target as Node)
       ) {
         setOpenSelectLanguage(false);
         setFadeClose(false);
