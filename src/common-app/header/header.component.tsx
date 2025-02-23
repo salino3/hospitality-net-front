@@ -53,16 +53,16 @@ export const Header: React.FC = () => {
                   aria-label={t("choose_language")}
                   alt={t("arrow_languages")}
                 />
-                <div
-                  className={`dropdownLanguage ${
-                    !fadeClose && openSelectLanguage ? "showDropdown" : ""
-                  }
+              </span>
+              <div
+                className={`dropdownLanguage ${
+                  !fadeClose && openSelectLanguage ? "showDropdown" : ""
+                }
                     
                   ${fadeClose ? "fadeClose" : ""}`}
-                >
-                  {openSelectLanguage && <ChooseLanguage />}
-                </div>
-              </span>
+              >
+                {openSelectLanguage && <ChooseLanguage />}
+              </div>
             </div>
           </div>
         </div>
