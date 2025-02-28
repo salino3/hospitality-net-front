@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { AccountRegisterForm } from "../../core/accounts";
 import "./input-photos.style.scss";
@@ -96,12 +96,43 @@ export const InputPhotos: React.FC<Props> = (props) => {
   } = props;
 
   const { t } = useTranslation("common");
+
+  const [dragging, setDragging] = useState(false);
+
+  // Function manage drag event
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+    setDragging(true);
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    setDragging(false);
+
+    const files = e.dataTransfer.files;
+    if (files && files.length > 0) {
+      // Add the first file (nn case multiple)
+      const file = files[0];
+      setFormData((prev) => ({ ...prev, profile_picture: file }));
+    }
+  };
+
+  const handleDragLeave = () => {
+    setDragging(false);
+  };
+
   console.log("here1", fileName);
   return (
     <div onClick={click} ref={ref} className={`rootInputFiles ${customStyles}`}>
-      <span>{lbl}</span>
-      <label htmlFor={name} className="customFileLabel">
-        <div className="boxInputFiles">
+      <span className="spanText">{lbl}</span>
+      <label
+        onDragOver={handleDragOver}
+        onDrop={handleDrop}
+        onDragLeave={handleDragLeave}
+        htmlFor={name}
+        className="customFileLabel"
+      >
+        <div className={`boxInputFiles ${dragging ? "dragging" : ""}`}>
           {t("select_file")}
           <input
             type="file"
@@ -120,7 +151,7 @@ export const InputPhotos: React.FC<Props> = (props) => {
         ) : fileName instanceof File && fileName?.name ? (
           <ContainerFile fileName={fileName} setFormData={setFormData} />
         ) : (
-          t("no_file_selected")
+          <span className="span_014">{t("no_file_selected")}</span>
         )}
       </label>
       {errMsg && <small>{errMsg}</small>}
