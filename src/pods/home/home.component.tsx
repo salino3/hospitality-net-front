@@ -176,6 +176,7 @@ export const Home: React.FC = () => {
         {/* Profile Picture */}
         <InputPhotos
           fileName={formData?.profile_picture}
+          setFormData={setFormData}
           name="profile_picture"
           change={handleProfilePictureChange}
           lbl={`${t("profile_picture")}:`}

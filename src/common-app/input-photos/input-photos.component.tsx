@@ -10,6 +10,7 @@ interface Props {
   lbl?: any;
   value?: string | number | readonly string[] | undefined;
   fileName: AccountRegisterForm["profile_picture"] | string;
+  setFormData: React.Dispatch<React.SetStateAction<AccountRegisterForm>>;
   customStyles?: string;
   errMsg?: string;
   checkError?: boolean;
@@ -48,7 +49,8 @@ export const ContainerMultiFiless: React.FC<{
 //*
 export const ContainerFile: React.FC<{
   fileName: AccountRegisterForm["profile_picture"] | string;
-}> = ({ fileName }) => {
+  setFormData: React.Dispatch<React.SetStateAction<AccountRegisterForm>>;
+}> = ({ fileName, setFormData }) => {
   return (
     <div className="containerFile">
       <span>{fileName instanceof File && fileName?.name}</span>
@@ -56,6 +58,7 @@ export const ContainerFile: React.FC<{
         onClick={(event) => {
           event?.preventDefault();
           event?.stopPropagation();
+          setFormData((prev) => ({ ...prev, profile_picture: null }));
         }}
         className="svg_01"
         xmlns="http://www.w3.org/2000/svg"
@@ -84,6 +87,7 @@ export const InputPhotos: React.FC<Props> = (props) => {
     lbl,
     value,
     fileName,
+    setFormData,
     customStyles,
     errMsg,
     checkError = false,
@@ -114,7 +118,7 @@ export const InputPhotos: React.FC<Props> = (props) => {
         {Array.isArray(fileName) && multiple && fileName?.length > 0 ? (
           fileName.map((file) => <ContainerMultiFiless file={file} />)
         ) : fileName instanceof File && fileName?.name ? (
-          <ContainerFile fileName={fileName} />
+          <ContainerFile fileName={fileName} setFormData={setFormData} />
         ) : (
           t("no_file_selected")
         )}
