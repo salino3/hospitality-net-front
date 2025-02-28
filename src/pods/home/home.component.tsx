@@ -183,19 +183,7 @@ export const Home: React.FC = () => {
           change={handleProfilePictureChange}
           lbl={`${t("profile_picture")}:`}
         />
-        <div className="boxInput">
-          <label htmlFor="profile_picture">{t("profile_picture")}:</label>
-          <input
-            id="profile_picture"
-            type="file"
-            name="profile_picture"
-            accept="image/*"
-            onChange={handleProfilePictureChange}
-          />
-          {typeof formDataError?.profile_picture === "string"
-            ? formDataError.profile_picture
-            : ""}
-        </div>
+
         <button className="btnStylesApp" type="submit">
           {t("confirm")}
         </button>
