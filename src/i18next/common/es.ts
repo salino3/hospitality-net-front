@@ -13,4 +13,6 @@ export const es = {
   languages: "Idiomas",
   english: "Inglés",
   spanish: "Español",
+  select_file: "Seleccionar archivo(s)",
+  no_file_selected: "Ningún archivo seleccionado",
 };

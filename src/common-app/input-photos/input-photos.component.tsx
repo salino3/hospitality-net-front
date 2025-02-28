@@ -1,4 +1,6 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
+import { AccountRegisterForm } from "../../core/accounts";
 import "./input-photos.style.scss";
 
 interface Props {
@@ -7,6 +9,7 @@ interface Props {
   name: string;
   lbl?: any;
   value?: string | number | readonly string[] | undefined;
+  fileName: AccountRegisterForm["profile_picture"] | string;
   customStyles?: string;
   errMsg?: string;
   checkError?: boolean;
@@ -22,6 +25,7 @@ export const InputPhotos: React.FC<Props> = (props) => {
     ref,
     lbl,
     value,
+    fileName,
     customStyles,
     errMsg,
     checkError = false,
@@ -29,23 +33,36 @@ export const InputPhotos: React.FC<Props> = (props) => {
     click,
   } = props;
 
+  const { t } = useTranslation("common");
+  console.log("here1", fileName);
   return (
     <div
       onClick={click}
       ref={ref}
       className={`rootInputPhotos ${customStyles}`}
     >
-      <label htmlFor={name}>{lbl}</label>
-      <input
-        type="file"
-        id={name}
-        accept={accept}
-        multiple={multiple}
-        name={name}
-        value={value}
-        onChange={change}
-        className={`${checkError ? "inputError" : ""}`}
-      />{" "}
+      <span>{lbl}</span>
+      <label htmlFor={name} className="customFileLabel">
+        <div className="boxInputFiles">
+          {t("select_file")}
+          <input
+            type="file"
+            id={name}
+            accept={accept}
+            multiple={multiple}
+            name={name}
+            value={value}
+            onChange={change}
+            hidden={true}
+            className={`${checkError ? "inputError" : ""}`}
+          />
+        </div>
+        {Array.isArray(fileName) && multiple && fileName?.length > 0
+          ? fileName.map((file) => <div>{file?.name}</div>)
+          : fileName instanceof File && fileName?.name
+          ? fileName?.name
+          : t("no_file_selected")}
+      </label>
       {errMsg && <small>{errMsg}</small>}
     </div>
   );
