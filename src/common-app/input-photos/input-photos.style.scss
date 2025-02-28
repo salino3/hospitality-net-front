@@ -1,4 +1,4 @@
-.rootInputPhotos {
+.rootInputFiles {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -14,11 +14,45 @@
     cursor: pointer;
 
     .boxInputFiles {
-      background-color: rgba(255, 255, 255, 0.4);
+      background-color: var(--color-19);
       border: solid 1px;
       border-radius: 0.5rem;
       padding: 1.2rem;
       width: 210px;
+    }
+    .containerMultiFiless {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      gap: 0.5rem;
+      border: solid 1px;
+
+      .card {
+        display: flex;
+      }
+    }
+
+    .containerFile {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      gap: 0.5rem;
+      .svg_01 {
+        background-color: var(--color-20);
+        border-radius: 50%;
+        padding: 0.1rem;
+        stroke: var(--color-17);
+      }
+
+      .svg_01:hover {
+        background-color: var(--color-19);
+      }
+      .svg_01:active {
+        background-color: white;
+        stroke: var(--color-two);
+      }
     }
   }
 }
