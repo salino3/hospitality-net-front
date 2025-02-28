@@ -83,6 +83,8 @@ export const Home: React.FC = () => {
     }
   };
 
+  console.log("here5", formData);
+
   return (
     <div className="rootHomePage">
       <h1>{t("home_page")}</h1>

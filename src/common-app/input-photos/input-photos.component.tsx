@@ -144,6 +144,8 @@ export const InputPhotos: React.FC<Props> = (props) => {
             onChange={change}
             hidden={true}
             className={`${checkError ? "inputError" : ""}`}
+            // Change 'key' for rerender <input> in case user mistake to delete photo and load same photo instantly
+            key={fileName instanceof File ? fileName.name : "noFile"}
           />
         </div>
         {Array.isArray(fileName) && multiple && fileName?.length > 0 ? (
