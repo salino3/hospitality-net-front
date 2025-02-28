@@ -1,10 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { ServicesApp } from "../../core";
 import { useAppFunctions } from "../../hooks";
 import { AccountRegisterForm } from "../../core/accounts";
-import { BasicInput } from "../../common-app";
+import { BasicInput, InputPhotos } from "../../common-app";
 import { routesApp } from "../../router";
 import "./home.styles.scss";
 
@@ -12,8 +12,6 @@ export const Home: React.FC = () => {
   const { t } = useTranslation("home");
 
   const navigate = useNavigate();
-
-  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const { checkEmptyValues } = useAppFunctions();
 
@@ -84,6 +82,8 @@ export const Home: React.FC = () => {
       );
     }
   };
+
+  console.log("here5", formData);
 
   return (
     <div className="rootHomePage">
@@ -176,21 +176,17 @@ export const Home: React.FC = () => {
         />
 
         {/* Profile Picture */}
-        <div className="boxInput">
-          <label htmlFor="profile_picture">{t("profile_picture")}:</label>
-          <input
-            ref={fileInputRef}
-            id="profile_picture"
-            type="file"
-            name="profile_picture"
-            accept="image/*"
-            onChange={handleProfilePictureChange}
-          />
-          {typeof formDataError?.profile_picture === "string"
-            ? formDataError.profile_picture
-            : ""}
-        </div>
-        <input type="submit" value={t("confirm")} />
+        <InputPhotos
+          fileName={formData?.profile_picture}
+          setFormData={setFormData}
+          name="profile_picture"
+          change={handleProfilePictureChange}
+          lbl={`${t("profile_picture")}:`}
+        />
+
+        <button className="btnStylesApp" type="submit">
+          {t("confirm")}
+        </button>
       </form>
     </div>
   );
