@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { AccountRegisterForm } from "../../core/accounts";
 import "./input-photos.style.scss";
@@ -22,7 +22,7 @@ interface Props {
 // Working in progress
 export const ContainerMultiFiless: React.FC<{
   file: (string & any) | (File & any);
-}> = ({ file }) => {
+}> = memo(({ file }) => {
   return (
     <div className="containerMultiFiless">
       <div className="card">
@@ -44,13 +44,13 @@ export const ContainerMultiFiless: React.FC<{
       </div>
     </div>
   );
-};
+});
 
 //*
 export const ContainerFile: React.FC<{
   fileName: AccountRegisterForm["profile_picture"] | string;
   setFormData: React.Dispatch<React.SetStateAction<AccountRegisterForm>>;
-}> = ({ fileName, setFormData }) => {
+}> = memo(({ fileName, setFormData }) => {
   return (
     <div className="containerFile">
       <span>{fileName instanceof File && fileName?.name}</span>
@@ -76,7 +76,7 @@ export const ContainerFile: React.FC<{
       </svg>
     </div>
   );
-};
+});
 
 export const InputPhotos: React.FC<Props> = (props) => {
   const {
