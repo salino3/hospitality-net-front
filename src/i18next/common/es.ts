@@ -8,6 +8,7 @@ export const es = {
   dashboard: "Panel",
   login: "Inicio se sessión",
   register: "Registro",
+  logout: "Cerrar sesión",
   arrow_languages: "Flecha idiomas",
   choose_language: "Elejir idioma",
   languages: "Idiomas",

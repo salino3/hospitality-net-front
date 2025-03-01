@@ -8,6 +8,7 @@ export const en = {
   dashboard: "Dashboard",
   login: "Login",
   register: "Register",
+  logout: "Logout",
   arrow_languages: "Arrow languages",
   choose_language: "Chosse language",
   languages: "languages",
