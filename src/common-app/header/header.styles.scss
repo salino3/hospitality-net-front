@@ -108,6 +108,7 @@
               transition: transform 0.3s ease-in-out;
             }
           }
+
           .dropdownLanguage {
             position: absolute;
             top: 90%;
@@ -157,6 +158,56 @@
           flex-direction: column;
           justify-content: center;
           align-items: center;
+        }
+      }
+
+      .boxDown2 {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        height: 100%;
+        position: relative;
+        border: solid;
+        padding: 0 0.2rem;
+        border-radius: 5px;
+        border: solid;
+
+        //
+        .spanLanguage {
+          cursor: pointer;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 0.5rem;
+          width: fit-content;
+
+          .iconLanguage {
+            transform: rotate(180deg);
+            transition: transform 0.3s ease-in-out;
+          }
+
+          .rotateIcon {
+            transform: rotate(90deg);
+            transition: transform 0.3s ease-in-out;
+          }
+        }
+
+        .dropdownLanguage {
+          position: absolute;
+          top: 90%;
+          left: 0;
+          background-color: var(--color-one);
+          border-radius: 5px;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          overflow: hidden;
+        }
+
+        .fadeClose {
+          animation: cover 1s forwards;
+        }
+
+        .showDropdown {
+          animation: show 1s forwards;
         }
       }
     }

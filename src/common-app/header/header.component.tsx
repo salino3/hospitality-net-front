@@ -142,13 +142,12 @@ export const Header: React.FC = () => {
               <span>{t("personal_info")}</span>
             </div>
             {/*  */}
-            <div className="boxDown">
+            <div className="boxDown2">
               <span
                 ref={btnToggleRef}
                 onClick={() => handleLanguages()}
                 className="spanLanguage"
               >
-                {t("languages")}
                 <img
                   className={`iconLanguage ${
                     !fadeClose && openSelectLanguage ? "rotateIcon" : ""
@@ -157,6 +156,7 @@ export const Header: React.FC = () => {
                   aria-label={t("choose_language")}
                   alt={t("arrow_languages")}
                 />
+                {t("nav_web")}
               </span>
               <div
                 ref={elementRef}
