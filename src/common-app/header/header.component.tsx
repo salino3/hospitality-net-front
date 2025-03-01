@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
 import { routesApp } from "../../router";
 import { useTranslation } from "react-i18next";
 import { GlobalAppContext } from "../../core";
@@ -9,6 +10,7 @@ import "./header.styles.scss";
 
 export const Header: React.FC = () => {
   const { t } = useTranslation("common");
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -119,26 +121,46 @@ export const Header: React.FC = () => {
             </div>
           </div>
         </div>
-        <nav>
-          <ul>
-            {currentAccount?.email ? (
-              <li onClick={() => closeSession()}>{t("logout")}</li>
-            ) : (
+        {isMobile ? (
+          <div className="containerNavigationMobile">
+            <svg
+              className="svgHamburger"
+              xmlns="http://www.w3.org/2000/svg"
+              width="25"
+              height="24"
+              viewBox="0 0 25 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+            >
+              <line x1="3" y1="6" x2="22" y2="6" />
+              <line x1="3" y1="12" x2="22" y2="12" />
+              <line x1="3" y1="18" x2="22" y2="18" />
+            </svg>
+          </div>
+        ) : (
+          <nav>
+            <ul>
+              {currentAccount?.email ? (
+                <li onClick={() => closeSession()}>{t("logout")}</li>
+              ) : (
+                <li>
+                  <Link to={routesApp?.root}>{t("home")}</Link>
+                </li>
+              )}
               <li>
-                <Link to={routesApp?.root}>{t("home")}</Link>
+                <Link to={routesApp?.companies}>{t("companies")}</Link>
               </li>
-            )}
-            <li>
-              <Link to={routesApp?.companies}>{t("companies")}</Link>
-            </li>
-            <li>
-              <Link to={routesApp?.dashboard}>{t("dashboard")}</Link>
-            </li>
-            {/* <li>
+              <li>
+                <Link to={routesApp?.dashboard}>{t("dashboard")}</Link>
+              </li>
+              {/* <li>
               <Link to={routesApp?.login}>{t("login")}</Link>
             </li> */}
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        )}
       </div>
     </header>
   );
