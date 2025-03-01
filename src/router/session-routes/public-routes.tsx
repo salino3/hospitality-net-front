@@ -10,7 +10,7 @@ export const PublicRoutes: React.FC = () => {
   const token = getAuthToken();
   React.useEffect(() => {
     if (token && token?.id) {
-      navigate(routesApp.private);
+      navigate(routesApp.dashboard);
     }
   }, []);
 
