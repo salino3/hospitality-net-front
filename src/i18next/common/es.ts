@@ -17,4 +17,6 @@ export const es = {
   select_file: "Seleccionar archivo",
   select_files: "Seleccionar archivos",
   no_file_selected: "Ningún archivo seleccionado",
+  personal_info: "Informaciones personales",
+  nav_web: "Navigación web",
 };
