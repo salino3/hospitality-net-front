@@ -1,10 +1,10 @@
 import React, { useContext, useEffect } from "react";
+import { ServicesApp } from "../../core";
 import {
   Account,
   GlobalAccountsContext,
   GlobalStateAccounts,
 } from "../../core/accounts";
-import { ServicesApp } from "../../core";
 import "./dashboard.styles.scss";
 
 export const Dashboard: React.FC = () => {
@@ -17,6 +17,9 @@ export const Dashboard: React.FC = () => {
       setAccountsState({ accounts: res.data });
     });
   }, []);
+
+  console.log("here3", accountsState);
+
   return (
     <div className="rootDashboard">
       <h1>Dashboard</h1>

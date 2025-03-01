@@ -122,7 +122,6 @@ export const InputPhotos: React.FC<Props> = (props) => {
     setDragging(false);
   };
 
-  console.log("here1", fileName);
   return (
     <div onClick={click} ref={ref} className={`rootInputFiles ${customStyles}`}>
       <span className="spanText">{lbl}</span>

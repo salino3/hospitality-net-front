@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { routesApp } from "../../router";
 import { useTranslation } from "react-i18next";
 import { GlobalAppContext } from "../../core";
+import { useAppFunctions } from "../../hooks";
 import { ChooseLanguage } from "../choose-language";
 import "./header.styles.scss";
 
@@ -18,6 +19,8 @@ export const Header: React.FC = () => {
   const {
     state: { currentAccount },
   } = useContext(GlobalAppContext);
+
+  const { closeSession } = useAppFunctions();
 
   const [openSelectLanguage, setOpenSelectLanguage] = useState(false);
   const [fadeClose, setFadeClose] = useState(false);
@@ -118,9 +121,13 @@ export const Header: React.FC = () => {
         </div>
         <nav>
           <ul>
-            <li>
-              <Link to="/">{t("home")}</Link>
-            </li>
+            {currentAccount?.email ? (
+              <li onClick={() => closeSession()}>{t("logout")}</li>
+            ) : (
+              <li>
+                <Link to={routesApp?.root}>{t("home")}</Link>
+              </li>
+            )}
             <li>
               <Link to={routesApp?.companies}>{t("companies")}</Link>
             </li>
