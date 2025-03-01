@@ -22,6 +22,7 @@ export const Header: React.FC = () => {
 
   const {
     state: { currentAccount },
+    setShowPersonalInfo,
   } = useContext(GlobalAppContext);
 
   const { closeSession } = useAppFunctions();
@@ -161,7 +162,10 @@ export const Header: React.FC = () => {
         </div>
         {isMobile ? (
           <div className="containerNavigationMobile">
-            <div className="containerSvgHamburger">
+            <div
+              onClick={() => setShowPersonalInfo((prev: boolean) => !prev)}
+              className="containerSvgHamburger"
+            >
               <svg
                 className="svgHamburger"
                 xmlns="http://www.w3.org/2000/svg"

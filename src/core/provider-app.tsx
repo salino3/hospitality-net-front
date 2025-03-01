@@ -14,6 +14,8 @@ interface Props {
 export const ProviderApp: React.FC<Props> = ({ children }) => {
   const [state, dispatch] = React.useReducer(ReducerApp, initialState);
 
+  const [showPersonalInfo, setShowPersonalInfo] = React.useState<boolean>(true);
+
   //
   const toggleTheme = useCallback(() => {
     dispatch({
@@ -32,7 +34,14 @@ export const ProviderApp: React.FC<Props> = ({ children }) => {
 
   return (
     <GlobalAppContext.Provider
-      value={{ state, dispatch, toggleTheme, loginAccount }}
+      value={{
+        state,
+        dispatch,
+        toggleTheme,
+        loginAccount,
+        showPersonalInfo,
+        setShowPersonalInfo,
+      }}
     >
       <main id={state.theme}>{children}</main>
     </GlobalAppContext.Provider>
