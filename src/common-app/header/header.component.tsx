@@ -123,21 +123,52 @@ export const Header: React.FC = () => {
         </div>
         {isMobile ? (
           <div className="containerNavigationMobile">
-            <svg
-              className="svgHamburger"
-              xmlns="http://www.w3.org/2000/svg"
-              width="25"
-              height="24"
-              viewBox="0 0 25 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-            >
-              <line x1="3" y1="6" x2="22" y2="6" />
-              <line x1="3" y1="12" x2="22" y2="12" />
-              <line x1="3" y1="18" x2="22" y2="18" />
-            </svg>
+            <div className="containerSvgHamburger">
+              <svg
+                className="svgHamburger"
+                xmlns="http://www.w3.org/2000/svg"
+                width="25"
+                height="24"
+                viewBox="0 0 25 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              >
+                <line x1="3" y1="6" x2="22" y2="6" />
+                <line x1="3" y1="12" x2="22" y2="12" />
+                <line x1="3" y1="18" x2="22" y2="18" />
+              </svg>
+              <span>{t("personal_info")}</span>
+            </div>
+            {/*  */}
+            <div className="boxDown">
+              <span
+                ref={btnToggleRef}
+                onClick={() => handleLanguages()}
+                className="spanLanguage"
+              >
+                {t("languages")}
+                <img
+                  className={`iconLanguage ${
+                    !fadeClose && openSelectLanguage ? "rotateIcon" : ""
+                  }`}
+                  src={"assets/icons/arrow_04.svg"}
+                  aria-label={t("choose_language")}
+                  alt={t("arrow_languages")}
+                />
+              </span>
+              <div
+                ref={elementRef}
+                className={`dropdownLanguage ${
+                  !fadeClose && openSelectLanguage ? "showDropdown" : ""
+                }
+                    
+                  ${fadeClose ? "fadeClose" : ""}`}
+              >
+                {openSelectLanguage && <ChooseLanguage />}
+              </div>
+            </div>
           </div>
         ) : (
           <nav>

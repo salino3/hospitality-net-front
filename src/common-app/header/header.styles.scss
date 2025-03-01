@@ -31,7 +31,7 @@
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    border: solid;
+    border: solid var(--color-16);
     width: 100%;
     padding: 0.5rem;
 
@@ -131,7 +131,7 @@
 
     .containerNavigationMobile {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       justify-content: space-between;
       align-items: center;
       gap: 1rem;
@@ -140,15 +140,24 @@
       padding: 0.5rem;
       width: 100%;
 
-      .svgHamburger {
-        border: 1px solid;
-        border-radius: 0.25rem;
-        border-radius: 0.25rem;
-        cursor: pointer;
+      .containerSvgHamburger {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
+        flex-direction: row;
+        justify-content: space-between;
         align-items: center;
+        gap: 1rem;
+        border: solid;
+        border-radius: 0.25rem;
+        padding: 0.2rem;
+        cursor: pointer;
+        .svgHamburger {
+          border: 1px solid;
+          border-radius: 0.25rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
       }
     }
 
