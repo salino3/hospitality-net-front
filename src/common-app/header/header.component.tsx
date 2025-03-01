@@ -16,7 +16,9 @@ export const Header: React.FC = () => {
   const location = useLocation();
 
   const btnToggleRef = useRef<HTMLSpanElement>(null);
+  const btnToggleRef2 = useRef<HTMLSpanElement>(null);
   const elementRef = useRef<HTMLDivElement>(null);
+  const elementRef2 = useRef<HTMLDivElement>(null);
 
   const {
     state: { currentAccount },
@@ -27,6 +29,9 @@ export const Header: React.FC = () => {
   const [openSelectLanguage, setOpenSelectLanguage] = useState(false);
   const [fadeClose, setFadeClose] = useState(false);
 
+  const [openSelectNav, setOpenSelectNav] = useState(false);
+  const [fadeClose2, setFadeClose2] = useState(false);
+
   const handleLanguages = () => {
     if (!openSelectLanguage) {
       setOpenSelectLanguage(true);
@@ -35,6 +40,18 @@ export const Header: React.FC = () => {
       setFadeClose(true);
       setTimeout(() => {
         setOpenSelectLanguage(false);
+      }, 1000);
+    }
+  };
+
+  const handleNav = () => {
+    if (!openSelectNav) {
+      setOpenSelectNav(true);
+      setFadeClose2(false);
+    } else {
+      setFadeClose2(true);
+      setTimeout(() => {
+        setOpenSelectNav(false);
       }, 1000);
     }
   };
@@ -58,6 +75,27 @@ export const Header: React.FC = () => {
 
     return () => {
       document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside2 = (event: MouseEvent) => {
+      if (
+        elementRef2.current &&
+        !elementRef2.current.contains(event?.target as Node) &&
+        btnToggleRef2.current &&
+        btnToggleRef2.current !== event?.target &&
+        !btnToggleRef2.current.contains(event?.target as Node)
+      ) {
+        setOpenSelectNav(false);
+        setFadeClose2(false);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside2);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside2);
     };
   }, []);
 
@@ -144,13 +182,13 @@ export const Header: React.FC = () => {
             {/*  */}
             <div className="boxDown2">
               <span
-                ref={btnToggleRef}
-                onClick={() => handleLanguages()}
-                className="spanLanguage"
+                ref={btnToggleRef2}
+                onClick={() => handleNav()}
+                className="spanNav"
               >
                 <img
-                  className={`iconLanguage ${
-                    !fadeClose && openSelectLanguage ? "rotateIcon" : ""
+                  className={`iconNav ${
+                    !fadeClose2 && openSelectNav ? "rotateIcon" : ""
                   }`}
                   src={"assets/icons/arrow_04.svg"}
                   aria-label={t("choose_language")}
@@ -159,14 +197,36 @@ export const Header: React.FC = () => {
                 {t("nav_web")}
               </span>
               <div
-                ref={elementRef}
-                className={`dropdownLanguage ${
-                  !fadeClose && openSelectLanguage ? "showDropdown" : ""
+                ref={elementRef2}
+                className={`dropdownNav ${
+                  !fadeClose2 && openSelectNav ? "showDropdown2" : ""
                 }
                     
-                  ${fadeClose ? "fadeClose" : ""}`}
+                  ${fadeClose2 ? "fadeClose2" : ""}`}
               >
-                {openSelectLanguage && <ChooseLanguage />}
+                {openSelectNav && (
+                  <nav
+                    style={{
+                      padding: "1rem",
+                    }}
+                  >
+                    <ul>
+                      {currentAccount?.email ? (
+                        <li onClick={() => closeSession()}>{t("logout")}</li>
+                      ) : (
+                        <li>
+                          <Link to={routesApp?.root}>{t("home")}</Link>
+                        </li>
+                      )}
+                      <li>
+                        <Link to={routesApp?.companies}>{t("companies")}</Link>
+                      </li>
+                      <li>
+                        <Link to={routesApp?.dashboard}>{t("dashboard")}</Link>
+                      </li>
+                    </ul>
+                  </nav>
+                )}
               </div>
             </div>
           </div>
