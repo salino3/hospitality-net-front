@@ -78,6 +78,7 @@ export const ContainerFile: React.FC<{
   );
 });
 
+//
 export const InputPhotos: React.FC<Props> = (props) => {
   const {
     multiple,
@@ -121,7 +122,6 @@ export const InputPhotos: React.FC<Props> = (props) => {
     setDragging(false);
   };
 
-  console.log("here1", fileName);
   return (
     <div onClick={click} ref={ref} className={`rootInputFiles ${customStyles}`}>
       <span className="spanText">{lbl}</span>
@@ -132,8 +132,12 @@ export const InputPhotos: React.FC<Props> = (props) => {
         htmlFor={name}
         className="customFileLabel"
       >
-        <div className={`boxInputFiles ${dragging ? "dragging" : ""}`}>
-          {t("select_file")}
+        <div
+          className={`boxInputFiles ${dragging ? "dragging" : ""}${
+            !fileName && checkError ? "inputError" : ""
+          }`}
+        >
+          {t(multiple ? "select_files" : "select_file")}
           <input
             type="file"
             id={name}
@@ -143,7 +147,6 @@ export const InputPhotos: React.FC<Props> = (props) => {
             value={value}
             onChange={change}
             hidden={true}
-            className={`${checkError ? "inputError" : ""}`}
             // Change 'key' for rerender <input> in case user mistake to delete photo and load same photo instantly
             key={fileName instanceof File ? fileName.name : "noFile"}
           />
@@ -156,7 +159,7 @@ export const InputPhotos: React.FC<Props> = (props) => {
           <span className="span_014">{t("no_file_selected")}</span>
         )}
       </label>
-      {errMsg && <small>{errMsg}</small>}
+      {!fileName && errMsg && <small>{errMsg}</small>}
     </div>
   );
 };

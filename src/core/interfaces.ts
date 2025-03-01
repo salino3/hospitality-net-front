@@ -41,6 +41,8 @@ export interface GlobalStateApp {
   dispatch: React.Dispatch<All_Actions>;
   toggleTheme: () => void;
   loginAccount: (info: CurrentAccount) => void;
+  showPersonalInfo: boolean;
+  setShowPersonalInfo: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 // Initial state useReducer

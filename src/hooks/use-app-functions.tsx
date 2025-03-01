@@ -1,7 +1,7 @@
 import { jwtDecode } from "jwt-decode";
 import { CurrentAccount } from "../core";
 import { routesApp } from "../router";
-import { AccountRegisterForm } from "../core/accounts";
+import { AccountLoginForm, AccountRegisterForm } from "../core/accounts";
 
 export const useAppFunctions = () => {
   //
@@ -89,13 +89,11 @@ export const useAppFunctions = () => {
 */
 
   //
-  const checkEmptyValues = (
+  const checkEmptyValues = <T extends Record<string, any>>(
     values: any,
     // it does not check them
     list: any[] = [],
-    setFormDataError?: React.Dispatch<
-      React.SetStateAction<AccountRegisterForm>
-    >,
+    setFormDataError?: React.Dispatch<React.SetStateAction<T>>,
     t?: any
   ): boolean => {
     let hasError = false;

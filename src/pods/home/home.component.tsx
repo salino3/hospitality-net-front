@@ -83,8 +83,6 @@ export const Home: React.FC = () => {
     }
   };
 
-  console.log("here5", formData);
-
   return (
     <div className="rootHomePage">
       <h1>{t("home_page")}</h1>
@@ -93,7 +91,7 @@ export const Home: React.FC = () => {
         <BasicInput
           type="text"
           change={handleChange("full_name")}
-          name={t("full_name")}
+          name={"full_name"}
           lbl={t("full_name")}
           value={formData?.full_name || ""}
         />
@@ -101,7 +99,7 @@ export const Home: React.FC = () => {
         {/* Email */}
         <BasicInput
           type="email"
-          name={t("email")}
+          name={"email"}
           change={handleChange("email")}
           value={formData.email || ""}
           lbl={t("email")}
@@ -112,16 +110,18 @@ export const Home: React.FC = () => {
         {/* Username */}
         <BasicInput
           type="text"
-          name={t("username")}
+          name={"username"}
           change={handleChange("username")}
           value={formData?.username || ""}
           lbl={t("username")}
+          checkError={!!formDataError?.username}
+          errMsg={formDataError?.username}
         />
 
         {/* Role Description */}
         <BasicInput
           type="text"
-          name={t("role_description")}
+          name={"role_description"}
           change={handleChange("role_description")}
           value={formData?.role_description || ""}
           lbl={t("role_description")}
@@ -132,7 +132,7 @@ export const Home: React.FC = () => {
         {/* Age */}
         <BasicInput
           type="number"
-          name={t("age")}
+          name={"age"}
           change={handleChange("age")}
           value={formData?.age ?? ""}
           lbl={t("age")}
@@ -147,7 +147,7 @@ export const Home: React.FC = () => {
         {/* Bio */}
         <BasicInput
           type="textarea"
-          name={t("bio")}
+          name={"bio"}
           change={handleChange("bio")}
           value={formData?.bio || ""}
           lbl={t("bio")}
@@ -156,7 +156,7 @@ export const Home: React.FC = () => {
         {/* Password */}
         <BasicInput
           type="password"
-          name={t("password")}
+          name={"password"}
           change={handleChange("password")}
           value={formData?.password || ""}
           lbl={t("password")}
@@ -167,7 +167,7 @@ export const Home: React.FC = () => {
         {/* Password Confirmation */}
         <BasicInput
           type="password"
-          name={t("passwordConfirm")}
+          name={"passwordConfirm"}
           change={handleChange("passwordConfirm")}
           value={formData?.passwordConfirm || ""}
           lbl={t("passwordConfirm")}
@@ -182,9 +182,14 @@ export const Home: React.FC = () => {
           name="profile_picture"
           change={handleProfilePictureChange}
           lbl={`${t("profile_picture")}:`}
+          checkError={!!formDataError?.profile_picture}
+          errMsg={
+            typeof formDataError?.profile_picture === "string"
+              ? formDataError?.profile_picture
+              : ""
+          }
         />
-
-        <button className="btnStylesApp" type="submit">
+        <button className="btnStylesApp mx_2" type="submit">
           {t("confirm")}
         </button>
       </form>

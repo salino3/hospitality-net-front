@@ -18,12 +18,32 @@
   }
 }
 
+//
+@keyframes show2 {
+  from {
+    height: 0px;
+  }
+
+  to {
+    height: 180px;
+  }
+}
+
+@keyframes cover2 {
+  from {
+    height: 180px;
+  }
+
+  to {
+    height: 0px;
+  }
+}
+
 .rootHeader {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: stretch;
-  gap: 1rem;
   font-size: 18px;
 
   .containerHeader {
@@ -32,7 +52,7 @@
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    border: solid;
+    border: solid var(--color-16);
     width: 100%;
     padding: 0.5rem;
 
@@ -109,6 +129,7 @@
               transition: transform 0.3s ease-in-out;
             }
           }
+
           .dropdownLanguage {
             position: absolute;
             top: 90%;
@@ -125,6 +146,106 @@
 
           .showDropdown {
             animation: show 1s forwards;
+          }
+        }
+      }
+    }
+
+    .containerNavigationMobile {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      background-color: var(--color-19);
+      border-radius: 5px;
+      padding: 0.5rem;
+      width: 100%;
+
+      .containerSvgHamburger {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        border: solid;
+        border-radius: 0.25rem;
+        padding: 0.2rem;
+        cursor: pointer;
+        .svgHamburger {
+          border: 1px solid;
+          border-radius: 0.25rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+
+      .boxDown2 {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        height: 100%;
+        position: relative;
+        border: solid;
+        padding: 0 0.2rem;
+        border-radius: 5px;
+        border: solid;
+
+        //
+
+        .spanNav {
+          cursor: pointer;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 0.5rem;
+          width: fit-content;
+
+          .iconNav {
+            transform: rotate(180deg);
+            transition: transform 0.3s ease-in-out;
+          }
+
+          .rotateIcon {
+            transform: rotate(90deg);
+            transition: transform 0.3s ease-in-out;
+          }
+        }
+
+        .dropdownNav {
+          position: absolute;
+          top: 50px;
+          left: -5rem;
+          z-index: 999999999999;
+          background-color: var(--color-one);
+          border-radius: 5px;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          overflow: hidden;
+        }
+
+        .fadeClose2 {
+          animation: cover2 1s forwards;
+        }
+
+        .showDropdown2 {
+          animation: show2 1s forwards;
+        }
+      }
+
+      @media screen and (max-width: 600px) {
+        flex-direction: column;
+        .containerSvgHamburger {
+          width: 100%;
+        }
+        .boxDown2 {
+          width: 100%;
+          justify-content: flex-end;
+
+          .dropdownNav {
+            left: 50%;
+            transform: translateX(-50%);
           }
         }
       }
@@ -151,8 +272,10 @@
         li {
           padding: 0.5rem 1rem;
           background-color: var(--color-17);
+          color: var(--color-16);
+          font-weight: 600;
           border-radius: 5px;
-          width: 120px;
+          width: 160px;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -172,9 +295,12 @@
         }
       }
     }
-    @media screen and (max-width: 800px) {
-      flex-direction: column;
 
+    @media screen and (max-width: 1020px) {
+      flex-direction: column;
+    }
+
+    @media screen and (max-width: 768px) {
       .boxInfo {
         .container_034 {
           display: flex;

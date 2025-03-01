@@ -28,6 +28,11 @@
       padding: 1.2rem;
       width: 215px;
     }
+
+    .inputError {
+      border: solid 2px red;
+    }
+
     .containerMultiFiless {
       display: flex;
       flex-direction: column;
@@ -85,5 +90,9 @@
       width: 100%;
       height: 30px;
     }
+  }
+
+  small {
+    color: red;
   }
 }

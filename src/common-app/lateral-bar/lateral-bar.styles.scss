@@ -1,0 +1,13 @@
+.rootLateralBar {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+  border: solid 1px;
+
+  min-height: 100%;
+  position: sticky;
+  left: 0;
+  top: 0;
+}
