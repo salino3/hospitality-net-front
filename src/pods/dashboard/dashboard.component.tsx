@@ -5,6 +5,7 @@ import {
   GlobalAccountsContext,
   GlobalStateAccounts,
 } from "../../core/accounts";
+import { LateralBar } from "../../common-app";
 import "./dashboard.styles.scss";
 
 export const Dashboard: React.FC = () => {
@@ -22,25 +23,27 @@ export const Dashboard: React.FC = () => {
 
   return (
     <div className="rootDashboard">
-      <h1>Dashboard</h1>
-      <p
-        style={{
-          borderBottom: "1px solid",
-        }}
-      >
-        Welcome to the Dashboard Page
-      </p>
-
-      <div>
-        {accountsState &&
-        accountsState?.accounts &&
-        accountsState?.accounts?.length > 0 ? (
-          accountsState?.accounts.map((account: Account) => (
-            <p>{account?.username}</p>
-          ))
-        ) : (
-          <span>No Accounts</span>
-        )}
+      <LateralBar />
+      <div className="containerDashboard">
+        <h1>Dashboard</h1>
+        <p
+          style={{
+            borderBottom: "1px solid",
+          }}
+        >
+          Welcome to the Dashboard Page
+        </p>
+        <div>
+          {accountsState &&
+          accountsState?.accounts &&
+          accountsState?.accounts?.length > 0 ? (
+            accountsState?.accounts.map((account: Account) => (
+              <p>{account?.username}</p>
+            ))
+          ) : (
+            <span>No Accounts</span>
+          )}
+        </div>
       </div>
     </div>
   );
