@@ -218,6 +218,7 @@
           position: absolute;
           top: 50px;
           left: -5rem;
+          z-index: 999999999999;
           background-color: var(--color-one);
           border-radius: 5px;
           box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -230,6 +231,22 @@
 
         .showDropdown2 {
           animation: show2 1s forwards;
+        }
+      }
+
+      @media screen and (max-width: 600px) {
+        flex-direction: column;
+        .containerSvgHamburger {
+          width: 100%;
+        }
+        .boxDown2 {
+          width: 100%;
+          justify-content: flex-end;
+
+          .dropdownNav {
+            left: 50%;
+            transform: translateX(-50%);
+          }
         }
       }
     }
