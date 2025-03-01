@@ -135,7 +135,7 @@ export const InputPhotos: React.FC<Props> = (props) => {
       >
         <div
           className={`boxInputFiles ${dragging ? "dragging" : ""}${
-            checkError ? "inputError" : ""
+            !fileName && checkError ? "inputError" : ""
           }`}
         >
           {t(multiple ? "select_files" : "select_file")}
@@ -160,7 +160,7 @@ export const InputPhotos: React.FC<Props> = (props) => {
           <span className="span_014">{t("no_file_selected")}</span>
         )}
       </label>
-      {errMsg && <small>{errMsg}</small>}
+      {!fileName && errMsg && <small>{errMsg}</small>}
     </div>
   );
 };

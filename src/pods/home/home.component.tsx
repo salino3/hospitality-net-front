@@ -186,10 +186,9 @@ export const Home: React.FC = () => {
           errMsg={
             typeof formDataError?.profile_picture === "string"
               ? formDataError?.profile_picture
-              : undefined
+              : ""
           }
         />
-
         <button className="btnStylesApp mx_2" type="submit">
           {t("confirm")}
         </button>

@@ -1,79 +1,75 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import { ServicesApp } from "../../core";
 import { useAppFunctions } from "../../hooks";
+import { BasicInput } from "../../common-app";
+import { AccountLoginForm } from "../../core/accounts";
+import { routesApp } from "../../router";
 import "./login.styles.scss";
-
-interface LoginAccount {
-  email: string;
-  password: string;
-}
 
 export const Login: React.FC = () => {
   const { t } = useTranslation("home");
 
+  const navigate = useNavigate();
+
   const { checkEmptyValues } = useAppFunctions();
 
-  const [formData, setFormdata] = useState<LoginAccount>({
+  const [formData, setFormData] = useState<AccountLoginForm>({
     email: "",
     password: "",
   });
 
-  const [formDataError, setFormdataError] = useState<LoginAccount>({
+  const [formDataError, setFormDataError] = useState<AccountLoginForm>({
     email: "",
     password: "",
   });
 
+  const handleChange =
+    (key: keyof AccountLoginForm) =>
+    (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      const { value } = event?.target;
+      setFormData({ ...formData, [key]: value });
+      setFormDataError({ ...formDataError, [key]: "" });
+    };
+
+  //
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event?.preventDefault();
 
-    if (!checkEmptyValues(formData)) {
-      ServicesApp?.loginAccount(formData).then((res: any) => {
-        setFormdata({
-          email: "",
-          password: "",
-        });
-      });
+    if (!checkEmptyValues(formData, [], setFormDataError, t)) {
+      ServicesApp?.loginAccount(formData).then(() =>
+        navigate(routesApp?.dashboard)
+      );
     }
   };
-
-  const handleChange =
-    (key: keyof LoginAccount) =>
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      const { value } = event?.target;
-      setFormdata({ ...formData, [key]: value });
-    };
 
   return (
     <div className="rootLogin">
       <h1>{t("login_page")}</h1>
       <p>{t("login_welcome")}</p>
       <form onSubmit={handleSubmit} id="loginForm">
-        <div className="boxInput">
-          <label htmlFor="email">{t("email")}:</label>
-          <input
-            className={formDataError?.email ? "inputError" : ""}
-            id="email"
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange("email")}
-          />
-          <small>{formDataError?.email}</small>
-        </div>
-        <div className="boxInput">
-          <label htmlFor="password">{t("password")}:</label>
-          <input
-            className={formDataError?.password ? "inputError" : ""}
-            id="password"
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange("password")}
-          />
-          <small>{formDataError?.password}</small>
-        </div>
-        <input type="submit" value="Submit" />
+        <BasicInput
+          type="email"
+          name="email"
+          change={handleChange("email")}
+          value={formData?.email || ""}
+          lbl={t("email")}
+          checkError={!!formDataError?.email}
+          errMsg={formDataError?.email}
+        />
+        <BasicInput
+          type="password"
+          name="password"
+          change={handleChange("password")}
+          value={formData?.password || ""}
+          lbl={t("password")}
+          checkError={!!formDataError?.password}
+          errMsg={formDataError?.password}
+        />
+        <button className="btnStylesApp mx_2" type="submit">
+          {t("confirm")}
+        </button>{" "}
       </form>
     </div>
   );
