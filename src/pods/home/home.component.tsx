@@ -83,8 +83,6 @@ export const Home: React.FC = () => {
     }
   };
 
-  console.log("here5", formData);
-
   return (
     <div className="rootHomePage">
       <h1>{t("home_page")}</h1>
@@ -182,9 +180,15 @@ export const Home: React.FC = () => {
           name="profile_picture"
           change={handleProfilePictureChange}
           lbl={`${t("profile_picture")}:`}
+          checkError={!!formDataError?.profile_picture}
+          errMsg={
+            typeof formDataError?.profile_picture === "string"
+              ? formDataError?.profile_picture
+              : undefined
+          }
         />
 
-        <button className="btnStylesApp" type="submit">
+        <button className="btnStylesApp mx_2" type="submit">
           {t("confirm")}
         </button>
       </form>
