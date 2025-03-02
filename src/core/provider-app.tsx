@@ -22,7 +22,7 @@ export const ProviderApp: React.FC<Props> = ({ children }) => {
       type: actionsProvider?.updateTheme,
       payload: state.theme === "dark" ? "light" : "dark",
     });
-  }, []);
+  }, [state.theme]);
 
   // login account
   const loginAccount = useCallback(function (info: CurrentAccount) {

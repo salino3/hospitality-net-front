@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { GlobalAppContext } from "../../core";
+import { GlobalAppContext, GlobalStateApp } from "../../core";
 import "./basic-input.styles.scss";
 
 interface PropsBasicInput {
@@ -37,7 +37,7 @@ export const BasicInput: React.FC<PropsBasicInput> = (props) => {
 
   const {
     state: { theme },
-  } = useContext(GlobalAppContext);
+  } = useContext<GlobalStateApp>(GlobalAppContext);
 
   return (
     <div

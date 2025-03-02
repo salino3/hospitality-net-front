@@ -1,7 +1,7 @@
 import React, { memo, useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { useMediaQuery } from "react-responsive";
-import { GlobalAppContext } from "../../core";
+import { GlobalAppContext, GlobalStateApp } from "../../core";
 import "./lateral-bar.styles.scss";
 
 export const LateralBar: React.FC = memo(() => {
@@ -14,7 +14,7 @@ export const LateralBar: React.FC = memo(() => {
     showPersonalInfo,
     setShowPersonalInfo,
     state: { currentAccount, theme },
-  } = useContext(GlobalAppContext);
+  } = useContext<GlobalStateApp>(GlobalAppContext);
 
   if (isMobile && !showPersonalInfo) {
     return null;
@@ -41,7 +41,7 @@ export const LateralBar: React.FC = memo(() => {
               x2="51.9536"
               y2="43.8421"
               stroke="currentColor"
-              strokeWidth="3"
+              strokeWidth="5"
             />
             <line
               x1="51.9398"
@@ -49,7 +49,7 @@ export const LateralBar: React.FC = memo(() => {
               x2="0.939838"
               y2="87.1691"
               stroke="currentColor"
-              strokeWidth="3"
+              strokeWidth="5"
             />
             <line
               x1="30.9536"
@@ -57,7 +57,7 @@ export const LateralBar: React.FC = memo(() => {
               x2="80.9536"
               y2="43.8421"
               stroke="currentColor"
-              strokeWidth="3"
+              strokeWidth="5"
             />
 
             <line
@@ -66,7 +66,7 @@ export const LateralBar: React.FC = memo(() => {
               x2="30.9398"
               y2="87.1691"
               stroke="currentColor"
-              strokeWidth="3"
+              strokeWidth="5"
             />
           </svg>
         ) : (
@@ -84,7 +84,7 @@ export const LateralBar: React.FC = memo(() => {
               x2="51.9536"
               y2="43.8421"
               stroke="currentColor"
-              strokeWidth="3"
+              strokeWidth="5"
             />
             <line
               x1="51.9398"
@@ -92,7 +92,7 @@ export const LateralBar: React.FC = memo(() => {
               x2="0.939838"
               y2="87.1691"
               stroke="currentColor"
-              strokeWidth="3"
+              strokeWidth="5"
             />
             <line
               x1="30.9536"
@@ -100,7 +100,7 @@ export const LateralBar: React.FC = memo(() => {
               x2="80.9536"
               y2="43.8421"
               stroke="currentColor"
-              strokeWidth="3"
+              strokeWidth="5"
             />
 
             <line
@@ -109,7 +109,7 @@ export const LateralBar: React.FC = memo(() => {
               x2="30.9398"
               y2="87.1691"
               stroke="currentColor"
-              strokeWidth="3"
+              strokeWidth="5"
             />
           </svg>
         )}

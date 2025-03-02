@@ -28,6 +28,7 @@
   --color-20: rgba(255, 255, 255, 0.2);
   --label-input-dark: #a0a5af;
   --label-input-light: #1b1b1b;
+  --color-21: #eaeaea; /* Light Gray/White - Modern and clean */
 
   --button-primary-bg: #d4af37; /* Gold - Primary button background */
   --button-primary-text: #1b1b1b; /* Black - Primary button text */
@@ -84,7 +85,7 @@ body {
 
   #light {
     color: var(--color-15) !important;
-    background-color: var(--color-17);
+    background-color: var(--color-21);
     button {
       color: var(--button-primary-text);
       background-color: var(--button-primary-bg);
