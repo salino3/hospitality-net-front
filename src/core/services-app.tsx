@@ -58,4 +58,8 @@ export class ServicesApp {
   public static async getAccounts(): Promise<AxiosResponse<Account[]>> {
     return await axios.get(`${baseBackend}/accounts`);
   }
+
+  public static async getAccount(id: string): Promise<AxiosResponse<Account>> {
+    return await axios.get(`${baseBackend}/accounts/${id}`);
+  }
 }

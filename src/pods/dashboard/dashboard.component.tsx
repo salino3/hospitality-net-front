@@ -38,7 +38,7 @@ export const Dashboard: React.FC = () => {
           accountsState?.accounts &&
           accountsState?.accounts?.length > 0 ? (
             accountsState?.accounts.map((account: Account) => (
-              <p>{account?.username}</p>
+              <p key={account?.account_id}>{account?.username}</p>
             ))
           ) : (
             <span>No Accounts</span>

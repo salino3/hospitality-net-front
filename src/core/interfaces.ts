@@ -24,11 +24,19 @@ interface ActionsProvider {
 }
 
 export interface CurrentAccount {
-  id: number;
+  account_id: number;
   email: string;
   role_user: "user" | "admin";
   iat: number;
   exp: number;
+  //
+  full_name?: string;
+  age: number | null | string;
+  account_type: "individual" | "business";
+  username: string;
+  bio?: string;
+  role_description?: string;
+  profile_picture: File | null | string;
 }
 
 export interface StateApp {

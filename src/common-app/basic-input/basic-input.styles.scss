@@ -11,10 +11,10 @@
     justify-content: center;
     gap: 0.5rem;
     position: relative;
+
     label {
       position: absolute;
       left: 5px;
-      color: var(--label-input);
       top: 18px;
       transform: translateY(-50%);
       pointer-events: none;
@@ -29,7 +29,6 @@
       transition: border-color 0.3s ease;
       transition: height 0.3s ease;
       width: 200px;
-      background-color: var(--color-two);
       border-radius: 5px;
     }
 
@@ -69,5 +68,25 @@
     width: 100%;
     bottom: 0;
     color: red;
+  }
+}
+
+.labelLight {
+  label {
+    color: var(--label-input-light);
+  }
+  input,
+  textarea {
+    background-color: var(--color-19);
+  }
+}
+
+.labelDark {
+  label {
+    color: var(--label-input-dark);
+  }
+  input,
+  textarea {
+    background-color: var(--color-two);
   }
 }
