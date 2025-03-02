@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { ServicesApp } from "../../core";
 import {
   Account,
@@ -9,6 +10,7 @@ import { LateralBar } from "../../common-app";
 import "./dashboard.styles.scss";
 
 export const Dashboard: React.FC = () => {
+  const { t } = useTranslation("dashboard");
   const { accountsState, setAccountsState } = useContext<GlobalStateAccounts>(
     GlobalAccountsContext
   );
