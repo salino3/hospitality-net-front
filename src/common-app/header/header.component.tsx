@@ -151,10 +151,12 @@ export const Header: React.FC = () => {
               </span>
               <span className="spanSwitch">
                 <Switcher
-                  first={"dark"}
-                  second={"light"}
+                  first={"#f5f5f5"}
+                  second={"#1b1b1b"}
                   toggle={toggleTheme}
-                  currentvalue={theme}
+                  currentvalue={document.documentElement.style.getPropertyValue(
+                    "--global-01"
+                  )}
                   t={t}
                 />
               </span>

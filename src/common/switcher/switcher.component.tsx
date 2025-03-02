@@ -16,7 +16,9 @@ export const Switcher: React.FC<Props> = (props) => {
   return (
     <section className="switch">
       <label htmlFor="switcher">
-        {currentvalue === second ? t(second) : t(first)}
+        {currentvalue === second
+          ? t(second === "#1b1b1b" ? "light" : second)
+          : t(first === "#f5f5f5" ? "dark" : first)}
       </label>
       <ReactSwitch
         name="switcher"
