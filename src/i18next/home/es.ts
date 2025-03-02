@@ -13,6 +13,7 @@ export const es = {
   username: "Nombre usuario",
   full_name: "Nombre entero",
   age: "Edad",
+  role: "Rol",
   passwordConfirm: "Confirmar Contraseña",
   bio: "Biography",
   role_description: "Descripción rol",

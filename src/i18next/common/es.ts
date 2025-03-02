@@ -19,4 +19,6 @@ export const es = {
   no_file_selected: "Ningún archivo seleccionado",
   personal_info: "Informaciones personales",
   nav_web: "Navigación web",
+  dark: "Oscuro",
+  light: "Claro",
 };

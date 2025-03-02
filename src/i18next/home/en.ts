@@ -13,6 +13,7 @@ export const en = {
   username: "Username",
   full_name: "Full name",
   age: "Age",
+  role: "Role",
   passwordConfirm: "Confirm Password",
   bio: "Biography",
   role_description: "Role description",

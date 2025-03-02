@@ -3,11 +3,73 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  gap: 1rem;
   border: solid 1px;
 
   min-height: 100%;
   position: sticky;
   left: 0;
   top: 0;
+
+  .rotateIcon {
+    transform: rotate(180deg);
+  }
+
+  .boxArrow {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    max-height: 2.5rem;
+    padding: 0.2rem;
+    width: 95%;
+    border-bottom: solid 1px;
+
+    svg {
+      cursor: pointer;
+      max-height: 1.6rem;
+      max-width: 1.6rem;
+    }
+
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  .containerLateralBar {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 0.5rem;
+    padding: 0 0.5rem;
+    width: 100%;
+    min-width: 180px;
+
+    h3 {
+      padding-top: 3px;
+      margin: 0;
+      border: none;
+    }
+
+    .ul_LB {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      .liText {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        span:first-of-type {
+          opacity: 0.7 !important;
+        }
+
+        span:last-of-type {
+          box-shadow: 0px 0.5px 0px 0px rgba(255, 255, 255, 0.2);
+          width: 100%;
+        }
+      }
+    }
+  }
 }

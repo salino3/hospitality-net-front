@@ -3,8 +3,9 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import { routesApp } from "../../router";
 import { useTranslation } from "react-i18next";
-import { GlobalAppContext } from "../../core";
+import { GlobalAppContext, GlobalStateApp } from "../../core";
 import { useAppFunctions } from "../../hooks";
+import { Switcher } from "../../common/switcher";
 import { ChooseLanguage } from "../choose-language";
 import "./header.styles.scss";
 
@@ -21,9 +22,10 @@ export const Header: React.FC = () => {
   const elementRef2 = useRef<HTMLDivElement>(null);
 
   const {
-    state: { currentAccount },
+    state: { theme, currentAccount },
+    toggleTheme,
     setShowPersonalInfo,
-  } = useContext(GlobalAppContext);
+  } = useContext<GlobalStateApp>(GlobalAppContext);
 
   const { closeSession } = useAppFunctions();
 
@@ -145,6 +147,15 @@ export const Header: React.FC = () => {
                   src={"assets/icons/arrow_04.svg"}
                   aria-label={t("choose_language")}
                   alt={t("arrow_languages")}
+                />
+              </span>
+              <span className="spanSwitch">
+                <Switcher
+                  first={"dark"}
+                  second={"light"}
+                  toggle={toggleTheme}
+                  currentvalue={theme}
+                  t={t}
                 />
               </span>
               <div

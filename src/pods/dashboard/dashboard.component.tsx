@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { ServicesApp } from "../../core";
 import {
   Account,
@@ -9,6 +10,7 @@ import { LateralBar } from "../../common-app";
 import "./dashboard.styles.scss";
 
 export const Dashboard: React.FC = () => {
+  const { t } = useTranslation("dashboard");
   const { accountsState, setAccountsState } = useContext<GlobalStateAccounts>(
     GlobalAccountsContext
   );
@@ -38,7 +40,7 @@ export const Dashboard: React.FC = () => {
           accountsState?.accounts &&
           accountsState?.accounts?.length > 0 ? (
             accountsState?.accounts.map((account: Account) => (
-              <p>{account?.username}</p>
+              <p key={account?.account_id}>{account?.username}</p>
             ))
           ) : (
             <span>No Accounts</span>

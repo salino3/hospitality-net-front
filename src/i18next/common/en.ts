@@ -19,4 +19,6 @@ export const en = {
   no_file_selected: "No file selected",
   personal_info: "Personal information",
   nav_web: "Web navigation",
+  dark: "Dark",
+  light: "Light",
 };

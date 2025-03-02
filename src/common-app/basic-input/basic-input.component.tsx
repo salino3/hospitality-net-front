@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { GlobalAppContext, GlobalStateApp } from "../../core";
 import "./basic-input.styles.scss";
 
 interface PropsBasicInput {
@@ -33,8 +34,18 @@ export const BasicInput: React.FC<PropsBasicInput> = (props) => {
     rows = 3,
     cols = 30,
   } = props;
+
+  const {
+    state: { theme },
+  } = useContext<GlobalStateApp>(GlobalAppContext);
+
   return (
-    <div ref={ref} className={`containerBasicInput ${customStyles}`}>
+    <div
+      ref={ref}
+      className={`containerBasicInput ${customStyles}  ${
+        theme === "dark" ? "labelDark" : "labelLight"
+      }`}
+    >
       <div className="contentInputBI">
         <label className={value ? "label_01" : ""} htmlFor={name}>
           {lbl}
