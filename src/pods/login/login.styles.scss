@@ -4,6 +4,7 @@
   min-height: 100%;
   justify-content: flex-start;
   align-items: center;
+  padding-top: 7rem;
 
   #loginForm {
     display: flex;
@@ -23,5 +24,17 @@
         border-color: red;
       }
     }
+  }
+
+  @media screen and (max-width: 1020px) {
+    padding-top: 10.5rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding-top: 13.5rem;
+  }
+
+  @media screen and (max-width: 600px) {
+    padding-top: 16.5rem;
   }
 }
