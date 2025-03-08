@@ -5,8 +5,8 @@ export interface Company {
   logo?: string;
   contact_email: string;
   contact_phone?: string;
-  country: string;
-  address: string;
+  country?: string;
+  address?: string;
   web_url?: string;
   created_at: string;
   updated_at: string;
@@ -27,7 +27,7 @@ export interface StateCompanies {
   companies: Company[];
 }
 
-export interface GlobalStateCompaniess {
+export interface GlobalStateCompanies {
   companiesState: StateCompanies;
   setCompaniesState: React.Dispatch<React.SetStateAction<StateCompanies>>;
 }

@@ -1,5 +1,6 @@
 import React from "react";
-import { GlobalStateCompaniess } from ".";
+import { GlobalStateCompanies } from ".";
 
-export const GlobalCompaniesContext =
-  React.createContext<GlobalStateCompaniess>({} as GlobalStateCompaniess);
+export const GlobalCompaniesContext = React.createContext<GlobalStateCompanies>(
+  {} as GlobalStateCompanies
+);

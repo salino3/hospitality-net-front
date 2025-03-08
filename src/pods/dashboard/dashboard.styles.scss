@@ -13,5 +13,18 @@
     justify-content: flex-start;
     align-items: center;
     flex-grow: 1;
+
+    .p1 {
+      border-bottom: solid 1px;
+    }
+
+    .containerCardsCompanies {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      border: solid;
+      justify-content: center;
+      align-items: center;
+    }
   }
 }

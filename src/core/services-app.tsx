@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import { apisApp } from ".";
 import { Account, AccountLoginForm, AccountRegisterForm } from "./accounts";
+import { Company } from "./companies";
 // import { useAppFunctions } from "../hooks";
 
 const { baseBackend } = apisApp;
@@ -65,7 +66,11 @@ export class ServicesApp {
   }
 
   // Companies
-  public static async getCompanies(): Promise<AxiosResponse<Account[]>> {
+  public static async getCompanies(): Promise<AxiosResponse<Company[]>> {
     return await axios.get(`${baseBackend}/companies`);
+  }
+
+  public static async getCompany(id: string): Promise<AxiosResponse<Company>> {
+    return await axios.get(`${baseBackend}/companies/${id}`);
   }
 }

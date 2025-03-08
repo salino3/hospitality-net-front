@@ -1,0 +1,37 @@
+.cardComapny {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  border: solid;
+  width: 100%;
+
+  .boxInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .boxLogo {
+    max-width: 10rem;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    img {
+      max-width: 9rem;
+      height: auto;
+    }
+    .smallBtn {
+      border-radius: 1rem;
+      color: var(--global-07);
+      border-color: transparent;
+      cursor: pointer;
+    }
+  }
+}
