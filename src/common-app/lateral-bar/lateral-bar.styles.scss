@@ -7,9 +7,11 @@
 
   min-height: 100%;
   position: sticky;
+  padding-top: 7rem;
   left: 0;
   top: 0;
-
+  background-color: var(--global-02);
+  border-color: var(--color-55);
   .rotateIcon {
     transform: rotate(180deg);
   }
@@ -50,6 +52,13 @@
       border: none;
     }
 
+    .personalimg_01 {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      object-position: center;
+    }
+
     .ul_LB {
       list-style: none;
       padding: 0;
@@ -72,5 +81,17 @@
         }
       }
     }
+  }
+
+  @media screen and (max-width: 1020px) {
+    padding-top: 10.5rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding-top: 13.5rem;
+  }
+
+  @media screen and (max-width: 600px) {
+    padding-top: 16.5rem;
   }
 }

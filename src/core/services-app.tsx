@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import { apisApp } from ".";
 import { Account, AccountLoginForm, AccountRegisterForm } from "./accounts";
+import { Company } from "./companies";
 // import { useAppFunctions } from "../hooks";
 
 const { baseBackend } = apisApp;
@@ -8,7 +9,7 @@ const { baseBackend } = apisApp;
 // const { getEndTokenFromCookie } = useAppFunctions();
 
 export class ServicesApp {
-  // Auth
+  //* Auth
 
   public static async registerAccount(
     account: AccountRegisterForm
@@ -53,13 +54,23 @@ export class ServicesApp {
       });
   }
 
-  // Get Data
+  //* Get Data
 
+  // Accouts
   public static async getAccounts(): Promise<AxiosResponse<Account[]>> {
     return await axios.get(`${baseBackend}/accounts`);
   }
 
   public static async getAccount(id: string): Promise<AxiosResponse<Account>> {
     return await axios.get(`${baseBackend}/accounts/${id}`);
+  }
+
+  // Companies
+  public static async getCompanies(): Promise<AxiosResponse<Company[]>> {
+    return await axios.get(`${baseBackend}/companies`);
+  }
+
+  public static async getCompany(id: string): Promise<AxiosResponse<Company>> {
+    return await axios.get(`${baseBackend}/companies/${id}`);
   }
 }

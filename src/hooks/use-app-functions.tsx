@@ -193,6 +193,32 @@ export const useAppFunctions = () => {
     return hasError;
   };
 
+  //
+  function downLoadImage(logo: string) {
+    if (!logo) return;
+
+    fetch(logo)
+      .then((response) => response.blob()) // Convert the image to a Blob
+      .then((blob) => {
+        const url = window.URL.createObjectURL(blob);
+
+        // Get file extension from URL
+        const extension = logo.split(".").pop()?.split("?")[0] || "png";
+        const currentDate = new Date().getTime();
+
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `company_logo_${currentDate}.${extension}`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+
+        // Release the URL object
+        window.URL.revokeObjectURL(url);
+      })
+      .catch((error) => console.error("Error downloading the image:", error));
+  }
+
   return {
     getEndTokenFromCookie,
     getAuthToken,
@@ -201,5 +227,6 @@ export const useAppFunctions = () => {
     getWordPrefix,
     capitalizeFirst,
     checkEmptyValues,
+    downLoadImage,
   };
 };

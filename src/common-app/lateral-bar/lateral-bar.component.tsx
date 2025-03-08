@@ -27,7 +27,7 @@ export const LateralBar: React.FC = memo(() => {
         className="boxArrow"
         onClick={() => setShowPersonalInfo((prev) => !prev)}
       >
-        {showPersonalInfo ? (
+        {!showPersonalInfo ? (
           <svg
             width="67"
             height="89"
@@ -119,6 +119,7 @@ export const LateralBar: React.FC = memo(() => {
           <h3>{currentAccount?.username}</h3>
 
           <img
+            className="personalimg_01"
             src={
               typeof currentAccount?.profile_picture === "string"
                 ? currentAccount?.profile_picture

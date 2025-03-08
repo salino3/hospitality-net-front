@@ -4,7 +4,7 @@
   justify-content: flex-start;
   align-items: center;
   min-height: 100%;
-
+  padding-top: 7rem;
   #registerForm {
     display: flex;
     flex-direction: column;
@@ -27,5 +27,17 @@
     .mx_2 {
       margin: 2rem 0;
     }
+  }
+
+  @media screen and (max-width: 1020px) {
+    padding-top: 10.5rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding-top: 13.5rem;
+  }
+
+  @media screen and (max-width: 600px) {
+    padding-top: 16.5rem;
   }
 }

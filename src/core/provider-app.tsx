@@ -29,6 +29,7 @@ export const ProviderApp: React.FC<Props> = ({ children }) => {
       root.style.setProperty("--global-05", "#d4af37");
       root.style.setProperty("--global-06", "#1b1b1b");
       root.style.setProperty("--global-07", "#f5f5f5");
+      root.style.setProperty("--global-08", "#4a5568");
       root.style.setProperty("--global-lines", "rgb(178, 164, 164)");
     } else {
       // #light
@@ -39,6 +40,7 @@ export const ProviderApp: React.FC<Props> = ({ children }) => {
       root.style.setProperty("--global-05", "#ed8936");
       root.style.setProperty("--global-06", "#30d2ca");
       root.style.setProperty("--global-07", "#f5f5f5");
+      root.style.setProperty("--global-08", "#a0a5af");
       root.style.setProperty("--global-lines", "rgb(27, 27, 27)");
     }
   }
