@@ -27,7 +27,7 @@ export const LateralBar: React.FC = memo(() => {
         className="boxArrow"
         onClick={() => setShowPersonalInfo((prev) => !prev)}
       >
-        {showPersonalInfo ? (
+        {!showPersonalInfo ? (
           <svg
             width="67"
             height="89"
