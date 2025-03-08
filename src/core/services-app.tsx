@@ -8,7 +8,7 @@ const { baseBackend } = apisApp;
 // const { getEndTokenFromCookie } = useAppFunctions();
 
 export class ServicesApp {
-  // Auth
+  //* Auth
 
   public static async registerAccount(
     account: AccountRegisterForm
@@ -53,13 +53,19 @@ export class ServicesApp {
       });
   }
 
-  // Get Data
+  //* Get Data
 
+  // Accouts
   public static async getAccounts(): Promise<AxiosResponse<Account[]>> {
     return await axios.get(`${baseBackend}/accounts`);
   }
 
   public static async getAccount(id: string): Promise<AxiosResponse<Account>> {
     return await axios.get(`${baseBackend}/accounts/${id}`);
+  }
+
+  // Companies
+  public static async getCompanies(): Promise<AxiosResponse<Account[]>> {
+    return await axios.get(`${baseBackend}/companies`);
   }
 }
