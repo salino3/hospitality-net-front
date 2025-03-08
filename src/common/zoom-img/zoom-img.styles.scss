@@ -27,10 +27,12 @@
       background-color: rgb(255, 255, 255, 0.2);
       padding: 0.5rem;
       border-radius: 0.5rem;
+      width: fit-content;
     }
 
     .boxZoomImg {
-      width: 100%;
+      width: fit-content;
+
       height: auto;
       max-width: 90vw;
       max-height: 90vh;

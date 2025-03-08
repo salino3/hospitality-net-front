@@ -11,7 +11,7 @@ export const CardCompanies: React.FC<{
 }> = ({ company, t }) => {
   const { downLoadImage } = useAppFunctions();
 
-  const [zommImage, setZoomImage] = useState({
+  const [zommImage, setZoomImage] = useState<{ [key: number]: boolean }>({
     [company?.company_id || 0]: false,
   });
 
@@ -23,7 +23,12 @@ export const CardCompanies: React.FC<{
       </div>
       <div className="boxLogo">
         {zommImage?.[company?.company_id || 0] && (
-          <ZoomImg img={company?.logo || ""} alt="Logo" />
+          <ZoomImg
+            show={zommImage?.[company?.company_id || 0]}
+            setShow={setZoomImage}
+            img={company?.logo || ""}
+            alt="Logo"
+          />
         )}
         <img
           className="img_10"
