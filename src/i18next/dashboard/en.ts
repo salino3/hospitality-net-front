@@ -4,4 +4,6 @@ export const en = {
   download: "Descarga",
   zoom_it: "(Zoom it)",
   click_me: "Click me",
+  rotate: "Rotate",
+  close: "Close",
 };

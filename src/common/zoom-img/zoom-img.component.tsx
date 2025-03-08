@@ -8,8 +8,7 @@ interface Props {
   alt?: string;
   download?: boolean;
   show: boolean;
-
-  setShow: Dispatch<SetStateAction<any>>;
+  setShow: Dispatch<SetStateAction<boolean | any>>;
 }
 
 export const ZoomImg: React.FC<Props> = (props) => {
@@ -27,10 +26,15 @@ export const ZoomImg: React.FC<Props> = (props) => {
     <div className="containerZoomImg">
       <div onClick={() => setShow(!show)} className="contentZoomImg">
         <section onClick={(e) => e.stopPropagation()}>
-          <button>rotate</button>
-          <button>X</button>
+          <button className="btnStylesApp">{t("rotate")}</button>
+          <button className="btnStylesApp" onClick={() => setShow(!show)}>
+            {t("close")}
+          </button>
           {download && (
-            <button onClick={() => downLoadImage(img || "")}>
+            <button
+              className="btnStylesApp secundaryBtn"
+              onClick={() => downLoadImage(img || "")}
+            >
               {t("download")}
             </button>
           )}
