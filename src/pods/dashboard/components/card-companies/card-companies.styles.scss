@@ -17,21 +17,36 @@
 
   .boxLogo {
     max-width: 10rem;
+    min-width: 10rem;
     height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     gap: 0.5rem;
+    padding: 0.5rem;
     img {
       max-width: 9rem;
       height: auto;
-    }
-    .smallBtn {
-      border-radius: 1rem;
-      color: var(--global-07);
-      border-color: transparent;
+      max-height: 11rem;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 0.5rem;
       cursor: pointer;
+    }
+    .box_88 {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      width: 100%;
+      .smallBtn {
+        border-radius: 1rem;
+        color: var(--global-07);
+        border-color: transparent;
+        cursor: pointer;
+      }
     }
   }
 }

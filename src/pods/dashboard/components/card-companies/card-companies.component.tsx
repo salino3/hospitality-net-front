@@ -16,13 +16,16 @@ export const CardCompanies: React.FC<{
         <span>{company?.contact_email}</span>
       </div>
       <div className="boxLogo">
-        <img src={company?.logo} alt="Logo" />
-        <button
-          onClick={() => downLoadImage(company?.logo || "")}
-          className="smallBtn"
-        >
-          <small>{t("download")}</small>
-        </button>
+        <img onClick={() => {}} src={company?.logo} alt="Logo" />
+        <div className="box_88">
+          <small>{t("zoom_it")}</small>{" "}
+          <button
+            onClick={() => downLoadImage(company?.logo || "")}
+            className="smallBtn"
+          >
+            <small>{t("download")}</small>
+          </button>
+        </div>
       </div>
     </div>
   );
