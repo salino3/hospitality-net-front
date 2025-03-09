@@ -22,7 +22,6 @@ export const LateralBar: React.FC = memo(() => {
     return null;
   }
 
-  console.log("hello", currentAccount);
   return (
     <div id={theme} className="rootLateralBar">
       <div

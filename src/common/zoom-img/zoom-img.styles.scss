@@ -23,12 +23,14 @@
     padding-top: 1rem;
     section {
       display: flex;
-      flex-direction: row;
+      // flex-direction: row;
+      flex-wrap: wrap;
       justify-content: center;
       align-items: center;
       gap: 1rem;
       background-color: rgb(220, 220, 220);
       padding: 1rem 2rem;
+      margin: 0rem 0.5rem;
       border-radius: 0.5rem;
       width: fit-content;
       z-index: 9999999999999999999999999999999999;

@@ -28,7 +28,7 @@ export const ZoomImg: React.FC<Props> = (props) => {
   };
 
   const { downLoadImage } = useAppFunctions();
-  console.log("hola", show, container?.clientWidth);
+
   return (
     <div className="containerZoomImg">
       <div onClick={() => setShow(!show)} className="contentZoomImg">
