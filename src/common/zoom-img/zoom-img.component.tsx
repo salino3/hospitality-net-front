@@ -33,15 +33,18 @@ export const ZoomImg: React.FC<Props> = (props) => {
     <div className="containerZoomImg">
       <div onClick={() => setShow(!show)} className="contentZoomImg">
         <section onClick={(e) => e.stopPropagation()}>
-          <button className="btnStylesApp" onClick={rotateImage}>
+          <button className="btnStylesApp buttonPopup_01" onClick={rotateImage}>
             {t("rotate")}
           </button>
-          <button className="btnStylesApp" onClick={() => setShow(!show)}>
+          <button
+            className="btnStylesApp buttonPopup_01"
+            onClick={() => setShow(!show)}
+          >
             {t("close")}
           </button>
           {download && (
             <button
-              className="btnStylesApp secundaryBtn"
+              className="btnStylesApp br_1"
               onClick={() => downLoadImage(img || "")}
             >
               {t("download")}

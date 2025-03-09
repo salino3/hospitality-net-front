@@ -31,13 +31,17 @@
       padding: 1rem 2rem;
       border-radius: 0.5rem;
       width: fit-content;
-      z-index: 5;
-      button {
+      z-index: 9999999999999999999999999999999999;
+      .buttonPopup_01 {
         border-radius: 1rem;
         color: var(--global-02);
         border: solid 1px var(--global-02);
         background-color: var(--global-08);
         cursor: pointer;
+      }
+
+      .br_1 {
+        border-radius: 1rem;
       }
     }
 

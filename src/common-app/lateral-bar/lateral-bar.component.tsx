@@ -1,12 +1,12 @@
-import React, { memo, useContext } from "react";
+import React, { memo, useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useMediaQuery } from "react-responsive";
 import { GlobalAppContext, GlobalStateApp } from "../../core";
+import { ZoomImg } from "../../common/zoom-img";
 import "./lateral-bar.styles.scss";
 
 export const LateralBar: React.FC = memo(() => {
   const { t } = useTranslation("home");
-  // const {t: t_common } = useTranslation("common");
 
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
 
@@ -15,6 +15,8 @@ export const LateralBar: React.FC = memo(() => {
     setShowPersonalInfo,
     state: { currentAccount, theme },
   } = useContext<GlobalStateApp>(GlobalAppContext);
+
+  const [zommImage, setZoomImage] = useState<boolean>(false);
 
   if (isMobile && !showPersonalInfo) {
     return null;
@@ -119,6 +121,7 @@ export const LateralBar: React.FC = memo(() => {
           <h3>{currentAccount?.username}</h3>
 
           <img
+            onClick={() => setZoomImage(!zommImage)}
             className="personalimg_01"
             src={
               typeof currentAccount?.profile_picture === "string"
@@ -127,6 +130,22 @@ export const LateralBar: React.FC = memo(() => {
             }
             alt={t("personal_photo")}
           />
+
+          {zommImage && (
+            <div className="boxZoomPersonalPhoto">
+              <ZoomImg
+                download
+                show={zommImage}
+                setShow={setZoomImage}
+                img={
+                  typeof currentAccount?.profile_picture === "string"
+                    ? currentAccount?.profile_picture
+                    : ""
+                }
+                alt={t("personal_photo")}
+              />
+            </div>
+          )}
           <ul className="ul_LB">
             <li className="liText">
               <span>{t("role")}:</span>
