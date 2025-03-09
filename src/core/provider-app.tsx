@@ -63,6 +63,14 @@ export const ProviderApp: React.FC<Props> = ({ children }) => {
     });
   }, []);
 
+  // logout account
+  const logoutAccount = useCallback(function () {
+    dispatch({
+      type: actionsProvider?.logoutAccount,
+      payload: null,
+    });
+  }, []);
+
   return (
     <GlobalAppContext.Provider
       value={{
@@ -70,6 +78,7 @@ export const ProviderApp: React.FC<Props> = ({ children }) => {
         dispatch,
         toggleTheme,
         loginAccount,
+        logoutAccount,
         showPersonalInfo,
         setShowPersonalInfo,
       }}
