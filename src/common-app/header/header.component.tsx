@@ -22,7 +22,7 @@ export const Header: React.FC = () => {
   const elementRef2 = useRef<HTMLDivElement>(null);
 
   const {
-    state: { theme, currentAccount },
+    state: { currentAccount },
     toggleTheme,
     setShowPersonalInfo,
   } = useContext<GlobalStateApp>(GlobalAppContext);
