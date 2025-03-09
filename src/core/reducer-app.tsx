@@ -12,6 +12,11 @@ export const ReducerApp = (state: StateApp, action: All_Actions) => {
         ...state,
         currentAccount: action.payload,
       };
+    case actionsProvider?.logoutAccount:
+      return {
+        ...state,
+        currentAccount: action.payload,
+      };
 
     default:
       return state;

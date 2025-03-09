@@ -1,6 +1,7 @@
 export const actionsProvider: ActionsProvider = {
   updateTheme: "UPDATE_THEME",
   loginAccount: "LOGIN_ACCOUNT",
+  logoutAccount: "LOGOUT_ACCOUNT",
 };
 
 interface UPDATE_THEME {
@@ -13,14 +14,23 @@ interface LOGIN_ACCOUNT_PROPS {
   payload: any | null;
 }
 
-export type All_Actions = UPDATE_THEME | LOGIN_ACCOUNT_PROPS;
+interface LOGOUT_ACCOUNT_PROPS {
+  type: typeof actionsProvider.logoutAccount;
+  payload: null;
+}
+
+export type All_Actions =
+  | UPDATE_THEME
+  | LOGIN_ACCOUNT_PROPS
+  | LOGOUT_ACCOUNT_PROPS;
 
 //----------------------------------------------------------------
 
 interface ActionsProvider {
-  // [key: string]: string; // no autocomplete
   updateTheme: string;
   loginAccount: string;
+  logoutAccount: string;
+  // [key: string]: string; // has not autocomplete
 }
 
 export interface CurrentAccount {
@@ -49,6 +59,7 @@ export interface GlobalStateApp {
   dispatch: React.Dispatch<All_Actions>;
   toggleTheme: () => void;
   loginAccount: (info: CurrentAccount) => void;
+  logoutAccount: () => void;
   showPersonalInfo: boolean;
   setShowPersonalInfo: React.Dispatch<React.SetStateAction<boolean>>;
 }
