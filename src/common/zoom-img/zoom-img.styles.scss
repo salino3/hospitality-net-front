@@ -16,8 +16,9 @@
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: fl;
     align-items: center;
+
     gap: 1rem;
     padding-top: 1rem;
     section {
@@ -30,7 +31,7 @@
       padding: 1rem 2rem;
       border-radius: 0.5rem;
       width: fit-content;
-
+      z-index: 5;
       button {
         border-radius: 1rem;
         color: var(--global-02);
@@ -42,7 +43,6 @@
 
     .boxZoomImg {
       width: fit-content;
-
       height: auto;
       max-width: 95vw;
       max-height: 85vh;
@@ -50,6 +50,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      transition: all 0.3s ease-in-out;
+      transform-origin: center;
       img {
         height: auto;
         max-width: 95vw;
